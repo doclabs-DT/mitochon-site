@@ -2,10 +2,11 @@
 title: Dynamic Standard of Care Mapping
 date: 2026-05-25T20:58:00.000+01:00
 tag: soc
-excerpt: Imagine you are leading an oncology brand or clinical development team...
+excerpt: In a space as volatile as Triple-Negative Breast Cancer, static
+  clinical roadmaps become obsolete the moment a landmark trial reads out.
 featured: false
 ---
-...and the entire ground shifts beneath your feet over a single weekend
+Imagine you are leading an oncology brand or clinical development team and the entire ground shifts beneath your feet over a single weekend
 
 In a space as volatile as Triple-Negative Breast Cancer (TNBC) to take an example, this is not a hypothetical - it is the reality heading into ASCO 2026. When a standard of care (SoC) drifts, it triggers a massive domino effect: it rewrites commercial models, scrambles medical education frameworks, and forces field teams to pivot their conversations with investigators overnight.
 
