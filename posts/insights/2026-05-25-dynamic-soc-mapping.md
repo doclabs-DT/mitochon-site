@@ -1,18 +1,15 @@
 ---
-title: Dynamic SoC Mapping
+title: Dynamic Standard of Care Mapping
 date: 2026-05-25T20:58:00.000+01:00
 tag: soc
-excerpt: >-
-  Imagine you are leading an oncology brand or clinical development team, and
-  the entire ground shifts beneath your feet over a single weekend.
-
-
-  In a space as volatile as Triple-Negative Breast Cancer (TNBC) to take an example, this is not a hypothetical - it is the reality heading into ASCO 2026. When a standard of care (SoC) drifts, it triggers a massive domino effect: it rewrites commercial models, scrambles medical education frameworks, and forces field teams to pivot their conversations with investigators overnight.
-
-
-  If your strategic roadmaps are anchored to static, PDF-style clinical guidelines, they are essentially outdated the moment a landmark phase III trial reads out or an accelerated approval drops.
+excerpt: Imagine you are leading an oncology brand or clinical development team,
+  and the entire ground shifts beneath your feet over a single weekend
 featured: false
 ---
+In a space as volatile as Triple-Negative Breast Cancer (TNBC) to take an example, this is not a hypothetical - it is the reality heading into ASCO 2026. When a standard of care (SoC) drifts, it triggers a massive domino effect: it rewrites commercial models, scrambles medical education frameworks, and forces field teams to pivot their conversations with investigators overnight.
+
+If your strategic roadmaps are anchored to static, PDF-style clinical guidelines, they are essentially outdated the moment a landmark phase III trial reads out or an accelerated approval drops.
+
 At Mito AI, we used to grounded AI to both capture and attempt to resolve this tension, with the help of dynamic visual frameworks. The two attached diagrams (for TNBC, across lines) show a heavily bifurcated landscape where today’s regulatory boundaries are in a direct, high-stakes collision with tomorrow's investigational data.
 
 ### The Science: Two Structural Shifts Reshaping the Field
