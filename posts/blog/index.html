@@ -233,13 +233,10 @@
   const REPO = 'doclabs-DT/mitochon-site';
 
   function parseFrontmatter(text) {
-    const match = text.match(/^---
-([\s\S]*?)
----/);
+    const match = text.match(/^---\n([\s\S]*?)\n---/);
     if (!match) return { meta: {}, body: text };
     const meta = {};
-    match[1].split('
-').forEach(line => {
+    match[1].split('\n').forEach(line => {
       const [key, ...val] = line.split(':');
       if (key) meta[key.trim()] = val.join(':').trim().replace(/^"|"$/g, '');
     });
