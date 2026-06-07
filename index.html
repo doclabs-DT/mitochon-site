@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mito AI — Clinical Decision Intelligence for Biopharma</title>
+  <meta name="description" content="Mito AI is an oncology-first clinical intelligence platform that helps biopharma teams turn fast-moving scientific and clinical data into actionable insights embedded in decision-ready workflows." />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── BRAND TOKENS ── */
+    :root {
+      --purple:       #A345F6;
+      --purple-light: #c07dff;
+      --purple-dim:   rgba(163,69,246,0.13);
+      --purple-glow:  rgba(163,69,246,0.22);
+      --green:        #3DBA7E;
+      --green-light:  #5ed4a0;
+      --green-dim:    rgba(61,186,126,0.12);
+      --black:        #0A0A0A;
+      --ink:          #111111;
+      --ink-soft:     #444444;
+      --ink-muted:    #888888;
+      --rule:         #E2E2E2;
+      --rule-dark:    rgba(255,255,255,0.09);
+      --bg:           #F7F7F5;
+      --bg-card:      #FFFFFF;
+
+      --font-serif:   'Cormorant Garamond', 'Garamond', Georgia, serif;
+      --font-sans:    'Nunito Sans', 'Avenir Next', 'Avenir', 'Century Gothic', sans-serif;
+
+      --radius:    14px;
+      --radius-sm: 7px;
+      --trans:     0.28s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    .section    { padding: 110px 0; }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+    .label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    h2.section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--trans);
+    }
+    .btn-primary { background: var(--purple); color: white; }
+    .btn-primary:hover { background: var(--purple-light); box-shadow: 0 4px 24px var(--purple-glow); transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--purple); color: var(--purple); }
+    .btn-outline-white { background: transparent; border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.85); }
+    .btn-outline-white:hover { border-color: white; color: white; }
+    .btn-black { background: var(--black); color: white; }
+    .btn-black:hover { background: #282828; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background var(--trans), box-shadow var(--trans), padding var(--trans);
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      padding: 14px 0;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img {
+      background: white;
+      border-radius: 6px;
+      padding: 3px 5px; height: 34px; width: auto;  }
+    .nav-logo-text { font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; letter-spacing: .02em; color: white; }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-family: var(--font-sans); font-size: .76rem; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.55); text-decoration: none; transition: color var(--trans); }
+    .nav-links a:hover { color: white; }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-login { font-family: var(--font-sans); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.45); text-decoration: none; transition: color var(--trans); }
+    .nav-login:hover { color: rgba(255,255,255,.9); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: white; transition: var(--trans); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--black);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 90px;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 72px 72px;
+      z-index: 0;
+    }
+    .hero-shape {
+      position: absolute; right: -60px; top: 0; bottom: 0; width: 46%;
+      background: linear-gradient(135deg, rgba(163,69,246,0.07) 0%, rgba(163,69,246,0.02) 100%);
+      clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 500px; right: -100px; top: 10%;
+      background: radial-gradient(ellipse, rgba(163,69,246,0.18) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .hero-glow-green {
+      position: absolute; width: 380px; height: 280px; left: -60px; bottom: 10%;
+      background: radial-gradient(ellipse, rgba(61,186,126,0.09) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 780px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+    .hero-eyebrow-line { width: 32px; height: 1px; background: var(--green); }
+    .hero-eyebrow-text { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--green); }
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 600;
+      line-height: 1.03;
+      letter-spacing: -.02em;
+      color: white;
+      margin-bottom: 32px;
+    }
+    .hero-headline em { font-style: italic; font-weight: 300; color: var(--purple-light); }
+    .hero-sub {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: rgba(255,255,255,.52);
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 48px;
+      border-left: 2px solid var(--green);
+      padding-left: 20px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; }
+    .scroll-track { width: 1px; height: 48px; background: rgba(255,255,255,.1); position: relative; overflow: hidden; }
+    .scroll-fill { position: absolute; top: 0; left: 0; right: 0; background: var(--purple); height: 60%; animation: scrollfill 2s ease-in-out infinite; }
+    @keyframes scrollfill { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+
+    /* ── WHY ── */
+    #why { background: white; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .challenge-list { display: flex; flex-direction: column; margin-top: 36px; }
+    .challenge-item { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+    .challenge-item:last-child { border-bottom: none; }
+    .c-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300; color: var(--purple); line-height: 1; padding-top: 2px; }
+    .c-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin-bottom: 5px; }
+    .c-text { font-size: .875rem; color: var(--ink-soft); line-height: 1.7; }
+    .why-right { position: sticky; top: 120px; }
+    .stat-block { background: var(--black); border-radius: var(--radius); padding: 44px; color: white; position: relative; overflow: hidden; margin-bottom: 20px; }
+    .stat-block::after { content: ''; position: absolute; top: 0; right: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, var(--purple), var(--green)); }
+    .stat-block-label { font-family: var(--font-sans); font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; }
+    .stat-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-sm); overflow: hidden; }
+    .stat-cell { padding: 28px 24px; background: rgba(255,255,255,.03); }
+    .stat-cell:first-child { border-right: 1px solid rgba(255,255,255,.08); }
+    .stat-n { font-family: var(--font-serif); font-size: 3rem; font-weight: 600; color: var(--purple-light); line-height: 1; margin-bottom: 6px; }
+    .stat-desc { font-size: .78rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+    .why-quote { border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px; }
+    .why-quote-mark { font-family: var(--font-serif); font-size: 5rem; line-height: .7; color: var(--purple); opacity: .25; margin-bottom: 8px; }
+    .why-quote-text { font-family: var(--font-serif); font-size: 1.05rem; font-style: italic; line-height: 1.7; color: var(--ink-soft); margin-bottom: 16px; }
+    .why-quote-sig { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+
+    /* ── VERISIGHT ── */
+    #verisight { background: var(--bg); }
+    .vs-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 64px; border-bottom: 1px solid var(--rule); }
+    .platform-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pillar { background: white; border-radius: var(--radius-sm); padding: 28px 24px; border: 1px solid var(--rule); transition: var(--trans); position: relative; overflow: hidden; }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--purple); transform: scaleY(0); transform-origin: bottom; transition: transform .4s ease; }
+    .pillar:hover::before { transform: scaleY(1); }
+    .pillar:hover { border-color: rgba(163,69,246,.2); box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+    .pillar-icon { font-size: 22px; margin-bottom: 10px; }
+    .pillar-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 7px; }
+    .pillar-text { font-size: .83rem; color: var(--ink-soft); line-height: 1.65; }
+
+    .vs-compare { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--rule); }
+    .vs-col { padding: 44px 40px; }
+    .vs-col-before { background: white; border-right: 1px solid var(--rule); }
+    .vs-col-after  { background: var(--black); }
+    .vs-col-head { font-family: var(--font-sans); font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+    .vs-col-before .vs-col-head { color: var(--ink-muted); }
+    .vs-col-after  .vs-col-head { color: var(--green); }
+    .vs-col-head::after { content: ''; flex: 1; height: 1px; }
+    .vs-col-before .vs-col-head::after { background: var(--rule); }
+    .vs-col-after  .vs-col-head::after { background: rgba(255,255,255,.08); }
+    .vs-item { display: flex; gap: 14px; font-size: .875rem; line-height: 1.55; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid; }
+    .vs-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .vs-col-before .vs-item { color: var(--ink-soft); border-color: var(--rule); }
+    .vs-col-after  .vs-item { color: rgba(255,255,255,.72); border-color: rgba(255,255,255,.06); }
+    .vs-mark { flex-shrink: 0; font-size: .7rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .vs-col-before .vs-mark { background: #fee2e2; color: #dc2626; }
+    .vs-col-after  .vs-mark { background: rgba(61,186,126,.18); color: var(--green); }
+
+    /* ── USE CASES ── */
+    #use-cases { background: white; }
+    .persona-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--rule); margin-bottom: 52px; overflow-x: auto; }
+    .persona-tab { font-family: var(--font-sans); font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; padding: 14px 20px; border: none; border-bottom: 2px solid transparent; background: transparent; color: var(--ink-muted); cursor: pointer; transition: var(--trans); white-space: nowrap; margin-bottom: -1px; }
+    .persona-tab:hover { color: var(--ink); }
+    .persona-tab.active { color: var(--purple); border-bottom-color: var(--purple); }
+    .persona-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .persona-card { border: 1px solid var(--rule); border-radius: var(--radius); padding: 32px; display: none; flex-direction: column; gap: 16px; transition: var(--trans); background: var(--bg); animation: fadeup .35s ease both; }
+    .persona-card.visible { display: flex; }
+    @keyframes fadeup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .persona-card:hover { border-color: rgba(163,69,246,.25); background: white; box-shadow: 0 6px 32px rgba(0,0,0,.05); }
+    .persona-tag { font-family: var(--font-sans); font-size: .67rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); display: flex; align-items: center; gap: 8px; }
+    .persona-tag::before { content: ''; width: 16px; height: 1px; background: var(--green); }
+    .persona-card-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; line-height: 1.25; }
+    .persona-card-lead { font-family: var(--font-serif); font-size: .95rem; font-style: italic; color: var(--ink-soft); line-height: 1.6; padding: 12px 0 12px 16px; border-left: 2px solid var(--purple); }
+    .persona-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .persona-bullets li { display: flex; gap: 10px; font-size: .855rem; color: var(--ink-soft); line-height: 1.55; }
+    .persona-bullets li::before { content: '→'; color: var(--purple); flex-shrink: 0; font-size: .8rem; margin-top: 1px; }
+    .persona-cta { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); }
+    .persona-cta a { font-family: var(--font-sans); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap var(--trans); }
+    .persona-cta a:hover { gap: 14px; }
+
+    /* ── ADVANTAGE ── */
+    #advantage { background: var(--bg); }
+    .adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; margin-top: 52px; }
+    .adv-card { padding: 44px 40px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: white; transition: background var(--trans); position: relative; }
+    .adv-card:nth-child(2n) { border-right: none; }
+    .adv-card:nth-child(3), .adv-card:nth-child(4) { border-bottom: none; }
+    .adv-card:hover { background: var(--bg); }
+    .adv-card::after { content: ''; position: absolute; bottom: 0; left: 40px; right: 40px; height: 2px; background: linear-gradient(90deg, var(--purple), var(--green)); transform: scaleX(0); transition: transform .4s ease; }
+    .adv-card:hover::after { transform: scaleX(1); }
+    .adv-num { font-family: var(--font-serif); font-size: 4rem; font-weight: 300; color: rgba(163,69,246,.1); line-height: 1; margin-bottom: 16px; }
+    .adv-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; }
+    .adv-answer { font-family: var(--font-sans); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .adv-answer::before { content: ''; width: 14px; height: 1px; background: var(--green); }
+    .adv-text { font-size: .87rem; color: var(--ink-soft); line-height: 1.7; }
+
+    /* ── ONTOLOGY ── */
+    #ontology { background: var(--black); padding: 100px 0; }
+    .onto-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .onto-left .section-title { color: white; }
+    .onto-left .section-sub { color: rgba(255,255,255,.48); }
+    .onto-left .label { color: var(--green); }
+    .onto-left .label::before { background: var(--green); }
+    .onto-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.07); border-radius: var(--radius); overflow: hidden; }
+    .onto-stat { background: rgba(255,255,255,.03); padding: 36px 32px; transition: background var(--trans); }
+    .onto-stat:hover { background: rgba(163,69,246,.07); }
+    .onto-n { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 600; color: var(--purple-light); line-height: 1; margin-bottom: 8px; }
+    .onto-lbl { font-family: var(--font-sans); font-size: .78rem; color: rgba(255,255,255,.38); line-height: 1.45; }
+
+    /* ── ENGAGEMENT ── */
+    #engagement { background: white; padding: 100px 0; }
+    .eng-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+    .eng-step { padding: 36px 28px; border-right: 1px solid var(--rule); transition: background var(--trans); }
+    .eng-step:last-child { border-right: none; }
+    .eng-step:hover { background: var(--bg); }
+    .eng-step-n { font-family: var(--font-serif); font-size: 3rem; font-weight: 300; color: var(--purple); opacity: .22; line-height: 1; margin-bottom: 16px; }
+    .eng-step-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .eng-step-text { font-size: .83rem; color: var(--ink-soft); line-height: 1.65; }
+
+    /* ── CTA ── */
+    #cta-banner { background: var(--purple); padding: 100px 0; position: relative; overflow: hidden; }
+    #cta-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.07) 1px, transparent 1px); background-size: 56px 56px; }
+    .cta-inner { position: relative; text-align: center; max-width: 700px; margin: 0 auto; }
+    .cta-inner .label { color: rgba(255,255,255,.65); }
+    .cta-inner .label::before { background: rgba(255,255,255,.45); }
+    .cta-inner .section-title { color: white; margin-bottom: 16px; }
+    .cta-inner p { font-size: 1rem; color: rgba(255,255,255,.72); line-height: 1.75; margin-bottom: 40px; }
+    .cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ── TEAM ── */
+    #team { background: var(--bg); }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 52px auto 0; }
+    .team-card { background: white; border-radius: var(--radius); padding: 36px; display: flex; gap: 24px; align-items: flex-start; border: 1px solid var(--rule); transition: var(--trans); }
+    .team-card:hover { border-color: rgba(163,69,246,.2); box-shadow: 0 6px 32px rgba(0,0,0,.05); }
+    .team-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--black); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-weight: 600; color: var(--purple-light); font-size: 1.2rem; border: 2px solid rgba(163,69,246,.28); }
+    .team-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin-bottom: 2px; }
+    .team-role { font-family: var(--font-sans); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .team-bio { font-size: .85rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 14px; }
+    .team-linkedin { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--purple); text-decoration: none; transition: color var(--trans); }
+    .team-linkedin:hover { color: var(--black); }
+    .team-linkedin svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* ── CONTACT ── */
+    #contact { background: white; }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+    .contact-detail { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+    .contact-detail:last-of-type { border-bottom: none; }
+    .contact-detail-icon { width: 36px; height: 36px; border: 1px solid var(--rule); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .contact-detail-label { font-family: var(--font-sans); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 3px; }
+    .contact-detail-value { font-size: .9rem; color: var(--ink); line-height: 1.55; }
+    .contact-detail-value a { color: var(--purple); text-decoration: none; }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-family: var(--font-sans); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); }
+    .form-group input, .form-group select, .form-group textarea { font-family: var(--font-sans); font-size: .9rem; padding: 13px 16px; border-radius: var(--radius-sm); border: 1px solid var(--rule); background: var(--bg); color: var(--ink); outline: none; transition: border-color var(--trans), box-shadow var(--trans); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-dim); background: white; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 48px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-logo img {
+      background: white;
+      border-radius: 5px;
+      padding: 2px 4px; height: 28px; width: auto;  }
+    .footer-logo-text { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; color: white; }
+    .footer-mid { display: flex; gap: 28px; }
+    .footer-mid a { font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.32); text-decoration: none; transition: color var(--trans); }
+    .footer-mid a:hover { color: rgba(255,255,255,.8); }
+    .footer-copy { font-size: .75rem; color: rgba(255,255,255,.22); }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-link { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: border-color var(--trans), background var(--trans); }
+    .social-link:hover { border-color: var(--purple); background: var(--purple-dim); }
+    .social-link svg { width: 14px; height: 14px; fill: rgba(255,255,255,.45); }
+    .social-link:hover svg { fill: white; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--black); z-index: 99; padding: 100px 32px 40px; flex-direction: column; border-top: 1px solid rgba(255,255,255,.06); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: white; text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .mobile-menu a:hover { color: var(--purple-light); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-right { position: static; }
+      .vs-header { grid-template-columns: 1fr; gap: 40px; }
+      .onto-inner { grid-template-columns: 1fr; gap: 56px; }
+      .eng-steps { grid-template-columns: 1fr 1fr; }
+      .eng-step:nth-child(2) { border-right: none; }
+      .eng-step:nth-child(3) { border-top: 1px solid var(--rule); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .nav-links, .nav-actions { display: none; }
+      .hamburger { display: flex; }
+      .persona-cards { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .vs-compare { grid-template-columns: 1fr; }
+      .vs-col-before { border-right: none; border-bottom: 1px solid var(--rule); }
+      .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .platform-pillars { grid-template-columns: 1fr; }
+      .onto-stats { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .adv-grid { grid-template-columns: 1fr; }
+      .adv-card { border-right: none !important; }
+      .adv-card:nth-child(3) { border-bottom: 1px solid var(--rule) !important; }
+      .eng-steps { grid-template-columns: 1fr; }
+      .eng-step { border-right: none !important; border-bottom: 1px solid var(--rule); }
+      .eng-step:last-child { border-bottom: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  
+    .nav-logo-svg {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo-svg svg {
+      height: 28px;
+      width: auto;
+    }
+    .footer-logo-svg {
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo-svg svg {
+      height: 22px;
+      width: auto;
+    }
+    /* Remove old img rules that are no longer needed */
+    .nav-logo img, .footer-logo img { display: none; }
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-svg"><svg width="1422" height="505" viewBox="0 0 1422 505" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 505L149.835 355.165H116.538V194.231L172.033 249.725L260.824 160.934L99.8901 0L0 99.8901V505Z" fill="white"/><path d="M455.084 405.11H332.997V239.9L172.062 283.022L455.084 0V405.11Z" fill="#AB5EFF"/><path d="M1421.61 157.238V340.875H1382.78V157.238H1421.61Z" fill="white"/><path d="M1225.54 340.875H1183.94L1247.33 157.238H1297.37L1360.67 340.875H1319.06L1273.07 199.202H1271.63L1225.54 340.875ZM1222.94 268.693H1321.22V299.001H1222.94V268.693Z" fill="white"/><path d="M1042.08 343.565C1028.16 343.565 1016.11 340.606 1005.95 334.688C995.847 328.71 988.046 320.401 982.546 309.761C977.047 299.06 974.297 286.657 974.297 272.549C974.297 258.322 977.047 245.888 982.546 235.248C988.046 224.548 995.847 216.239 1005.95 210.321C1016.11 204.343 1028.16 201.354 1042.08 201.354C1056.01 201.354 1068.03 204.343 1078.13 210.321C1088.29 216.239 1096.12 224.548 1101.62 235.248C1107.12 245.888 1109.87 258.322 1109.87 272.549C1109.87 286.657 1107.12 299.06 1101.62 309.761C1096.12 320.401 1088.29 328.71 1078.13 334.688C1068.03 340.606 1056.01 343.565 1042.08 343.565ZM1042.26 313.975C1048.6 313.975 1053.89 312.182 1058.13 308.595C1062.38 304.948 1065.58 299.987 1067.73 293.71C1069.94 287.434 1071.05 280.29 1071.05 272.28C1071.05 264.27 1069.94 257.126 1067.73 250.85C1065.58 244.573 1062.38 239.612 1058.13 235.965C1053.89 232.319 1048.6 230.496 1042.26 230.496C1035.87 230.496 1030.49 232.319 1026.12 235.965C1021.82 239.612 1018.56 244.573 1016.35 250.85C1014.2 257.126 1013.12 264.27 1013.12 272.28C1013.12 280.29 1014.2 287.434 1016.35 293.71C1018.56 299.987 1021.82 304.948 1026.12 308.595C1030.49 312.182 1035.87 313.975 1042.26 313.975Z" fill="white"/><path d="M956.484 203.148V231.841H873.543V203.148H956.484ZM892.373 170.151H930.571V298.553C930.571 302.08 931.109 304.829 932.185 306.802C933.261 308.715 934.755 310.06 936.668 310.837C938.641 311.614 940.912 312.003 943.483 312.003C945.276 312.003 947.069 311.853 948.863 311.554C950.656 311.196 952.031 310.927 952.987 310.747L958.995 339.172C957.082 339.769 954.392 340.457 950.925 341.234C947.458 342.071 943.244 342.579 938.282 342.758C929.076 343.117 921.006 341.891 914.072 339.082C907.198 336.272 901.848 331.909 898.022 325.991C894.196 320.073 892.313 312.6 892.373 303.574V170.151Z" fill="white"/><path d="M814.415 340.875V203.148H852.613V340.875H814.415ZM833.604 185.394C827.925 185.394 823.053 183.511 818.988 179.745C814.983 175.919 812.98 171.346 812.98 166.026C812.98 160.766 814.983 156.253 818.988 152.487C823.053 148.661 827.925 146.748 833.604 146.748C839.283 146.748 844.125 148.661 848.13 152.487C852.194 156.253 854.227 160.766 854.227 166.026C854.227 171.346 852.194 175.919 848.13 179.745C844.125 183.511 839.283 185.394 833.604 185.394Z" fill="white"/><path d="M584.102 157.238H631.983L682.555 280.619H684.707L735.279 157.238H783.161V340.875H745.501V221.35H743.976L696.453 339.978H670.809L623.286 220.901H621.761V340.875H584.102V157.238Z" fill="white"/></svg></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#why">Why Mito AI</a></li>
+        <li><a href="#verisight">Verisight</a></li>
+        <li><a href="#use-cases">Use Cases</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/insights">Insights</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://app.mitochon.ai" class="nav-login">Login</a>
+        <a href="#contact" class="btn btn-primary" style="padding:11px 24px;font-size:.72rem;">Request Access</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#why" onclick="toggleMenu()">Why Mito AI</a>
+  <a href="#verisight" onclick="toggleMenu()">Verisight</a>
+  <a href="#use-cases" onclick="toggleMenu()">Use Cases</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="/blog">Blog</a>
+  <a href="/insights">Insights</a>
+  <a href="https://app.mitochon.ai">Login</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-shape"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-green"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        <span class="hero-eyebrow-text">Oncology-First Clinical Intelligence</span>
+      </div>
+      <h1 class="hero-headline">
+        Keeping you<br /><em>Ahead of Ready.</em>
+      </h1>
+      <p class="hero-sub">
+        Mito AI is an oncology-first clinical intelligence platform that helps biopharma teams turn fast-moving scientific and clinical data into actionable insights — embedded in decision-ready workflows, with the transparency and control that complex oncology decisions demand.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Request a Pilot</a>
+        <a href="#verisight" class="btn btn-outline-white">Explore Verisight</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-track"><div class="scroll-fill"></div></div>
+  </div>
+</section>
+
+<!-- ── WHY ── -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <span class="label">The Problem</span>
+        <h2 class="section-title">Pharma teams are drowning in scientific flux</h2>
+        <p class="section-sub">The bottleneck is no longer access to data. It is turning fragmented, noisy evidence into trusted, decision-ready insights at speed.</p>
+        <div class="challenge-list reveal">
+          <div class="challenge-item">
+            <div class="c-num">01</div>
+            <div>
+              <div class="c-title">Evidence Explosion</div>
+              <div class="c-text">Publications, congresses, guidelines, labels and field insights move faster than any team can synthesise manually — and suffer from an absence of unified ontology and shared lexicon.</div>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <div class="c-num">02</div>
+            <div>
+              <div class="c-title">Decision Pressure</div>
+              <div class="c-text">Strategy and field teams need defensible answers for HCPs, investors and regulators in days or hours — not the weeks that manual synthesis requires.</div>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <div class="c-num">03</div>
+            <div>
+              <div class="c-title">Trust Gap</div>
+              <div class="c-text">Generic AI is fast, but life sciences decisions require auditability, disease context, evidence hierarchy and expert control — none of which general-purpose LLMs provide.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right reveal">
+        <div class="stat-block">
+          <div class="stat-block-label">Platform Performance</div>
+          <div class="stat-row-2">
+            <div class="stat-cell">
+              <div class="stat-n">50–70%</div>
+              <div class="stat-desc">analytical heavy lifting compressed in selected workflows</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-n">Hours</div>
+              <div class="stat-desc">not days or weeks for first-pass synthesis</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-quote">
+          <div class="why-quote-mark">"</div>
+          <div class="why-quote-text">In oncology, the evidence base that determines every critical decision — how to design the trial, whether to do the deal, how to sequence the indication — is growing faster than any team can synthesise manually.</div>
+          <div class="why-quote-sig">Clinical Decision Intelligence — Mito AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VERISIGHT ── -->
+<section id="verisight" class="section">
+  <div class="container">
+    <div class="vs-header">
+      <div>
+        <span class="label">The Platform</span>
+        <h2 class="section-title">VERISIGHT by Mito AI</h2>
+        <p class="section-sub">The governed clinical intelligence layer that closes the synthesis gap — for every function, at every stage of the asset lifecycle. Trusted inputs. Auditable outputs. Designed for scientific interrogation.</p>
+        <div style="margin-top:28px;">
+          <a href="#contact" class="btn btn-primary">Request Demo</a>
+        </div>
+      </div>
+      <div class="platform-pillars reveal">
+        <div class="pillar">
+          <div class="pillar-icon">🗂</div>
+          <div class="pillar-title">Specialist Workflows</div>
+          <div class="pillar-text">Predefined, high-value workflows for SoC mapping, evidence synthesis, competitive review and clinical landscape assessment.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">💬</div>
+          <div class="pillar-title">Q-Bar</div>
+          <div class="pillar-text">Open-ended scientific query interface, powered by proprietary retrieval and multi-source, auditable synthesis.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📚</div>
+          <div class="pillar-title">Evidence Library</div>
+          <div class="pillar-text">Structured, indexed evidence across publications, abstracts, labels, guidelines and trials — linked via shared oncology ontology.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <div class="pillar-title">Governance Built-In</div>
+          <div class="pillar-text">Transparent inputs, editable outputs, source citations, audit trails and reusable reports — for regulated environments from day one.</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="vs-compare">
+        <div class="vs-col vs-col-before">
+          <div class="vs-col-head">Before Verisight</div>
+          <div class="vs-item"><span class="vs-mark">✕</span><span>3–5 days to synthesise a SoC landscape across PDFs, spreadsheets and analyst memory</span></div>
+          <div class="vs-item"><span class="vs-mark">✕</span><span>BD diligence outputs never reach the NPP team building launch strategy 6 months later</span></div>
+          <div class="vs-item"><span class="vs-mark">✕</span><span>R&D trial design rationale rebuilt from scratch by Medical Affairs at launch</span></div>
+          <div class="vs-item"><span class="vs-mark">✕</span><span>Every congress cycle triggers another bespoke one-off request to Insights &amp; Analytics</span></div>
+          <div class="vs-item"><span class="vs-mark">✕</span><span>No audit trail — the MSL cannot show the HCP where the claim comes from</span></div>
+        </div>
+        <div class="vs-col vs-col-after">
+          <div class="vs-col-head">With Verisight</div>
+          <div class="vs-item"><span class="vs-mark">✓</span><span>First-pass SoC synthesis in hours — sourced, structured, ready for expert review</span></div>
+          <div class="vs-item"><span class="vs-mark">✓</span><span>BD's asset evaluation feeds NPP's market mapping feeds Medical's HCP narrative — from one evidence layer</span></div>
+          <div class="vs-item"><span class="vs-mark">✓</span><span>R&D's trial design stress-test becomes Medical Affairs' scientific rationale at launch — nothing rebuilt</span></div>
+          <div class="vs-item"><span class="vs-mark">✓</span><span>Congress intelligence is reusable, cumulative and available across all functions simultaneously</span></div>
+          <div class="vs-item"><span class="vs-mark">✓</span><span>Every output source-cited, versioned, traceable — audit trail built in from day one</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── USE CASES ── -->
+<section id="use-cases" class="section">
+  <div class="container">
+    <span class="label">Use Cases</span>
+    <h2 class="section-title">One platform. Every function.</h2>
+    <p class="section-sub" style="margin-bottom:44px;">The same governed evidence layer serves every team — from first-in-human trial design through launch and HCP engagement.</p>
+    <div class="persona-tabs">
+      <button class="persona-tab active" onclick="filterPersona('all',this)">All Functions</button>
+      <button class="persona-tab" onclick="filterPersona('medical-affairs',this)">Medical Affairs</button>
+      <button class="persona-tab" onclick="filterPersona('clinical-dev',this)">Clinical Development</button>
+      <button class="persona-tab" onclick="filterPersona('executive',this)">Executive &amp; Strategy</button>
+      <button class="persona-tab" onclick="filterPersona('bd',this)">Business Development</button>
+      <button class="persona-tab" onclick="filterPersona('npp',this)">Early Commercial / NPP</button>
+      <button class="persona-tab" onclick="filterPersona('insights',this)">Insights &amp; Analytics</button>
+    </div>
+    <div class="persona-cards">
+      <div class="persona-card visible" data-persona="medical-affairs">
+        <div class="persona-tag">Medical Affairs</div>
+        <div class="persona-card-title">From Scientific Strategy to Field-Ready Engagement</div>
+        <div class="persona-card-lead">"Our asset launches in 18 months — how do we get ahead of ready?"</div>
+        <ul class="persona-bullets">
+          <li>Map SoC, evidence gaps and competitor landscape continuously — not as point-in-time snapshots</li>
+          <li>Generate cited, HCP-segment-specific content in hours, not weeks of MLR cycles</li>
+          <li>Build and pressure-test key messages against live field signals and congress intelligence</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about Medical Affairs →</a></div>
+      </div>
+      <div class="persona-card visible" data-persona="clinical-dev">
+        <div class="persona-tag">Clinical Development</div>
+        <div class="persona-card-title">Trial Design Intelligence You Can Defend</div>
+        <div class="persona-card-lead">"We need a defensible trial design rationale — not a report that dates the moment it's delivered."</div>
+        <ul class="persona-bullets">
+          <li>Stress-test trial design against current and emerging SoC by biomarker and setting</li>
+          <li>Monitor competitor trial activity and regulatory precedents continuously</li>
+          <li>TPP benchmarking grounded in live evidence — not analyst memory from the last cycle</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about Clinical Dev →</a></div>
+      </div>
+      <div class="persona-card visible" data-persona="executive">
+        <div class="persona-tag">Executive &amp; Strategy</div>
+        <div class="persona-card-title">Intelligence Briefings at the Pace of the Field</div>
+        <div class="persona-card-lead">"A competitor Phase 3 reads out at ESMO — the board wants a brief in three days."</div>
+        <ul class="persona-bullets">
+          <li>Executive briefings synthesised in hours — multi-source, cross-functional, board-ready</li>
+          <li>SoC evolution scenario planning with function-specific implications</li>
+          <li>Strategic intelligence library: versioned, searchable and always current</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about Strategy →</a></div>
+      </div>
+      <div class="persona-card visible" data-persona="bd">
+        <div class="persona-tag">Business Development</div>
+        <div class="persona-card-title">Deal Diligence Grounded in Live Evidence</div>
+        <div class="persona-card-lead">"We have $500M to invest in Melanoma — where should we focus, and is our deal thesis still valid?"</div>
+        <ul class="persona-bullets">
+          <li>On-demand landscape analyses — deal rationale always tested against live evidence, not the last cycle</li>
+          <li>White space analysis, unmet need mapping and prioritisation by setting and biomarker</li>
+          <li>Asset evaluation that feeds directly into NPP and Medical Affairs — nothing rebuilt downstream</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about BD →</a></div>
+      </div>
+      <div class="persona-card visible" data-persona="npp">
+        <div class="persona-tag">Early Commercial / NPP</div>
+        <div class="persona-card-title">Market Shaping Before the Launch Clock Starts</div>
+        <div class="persona-card-lead">"We need to understand where our asset fits in the evolving treatment algorithm — before competitors define the narrative."</div>
+        <ul class="persona-bullets">
+          <li>Treatment algorithm evolution mapped by line, setting and biomarker — continuously updated</li>
+          <li>Unmet need analysis and market opportunity scoring across population segments</li>
+          <li>TPP design and benchmarking grounded in regulatory precedent and competitor data</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about NPP →</a></div>
+      </div>
+      <div class="persona-card visible" data-persona="insights">
+        <div class="persona-tag">Insights &amp; Analytics</div>
+        <div class="persona-card-title">From Bespoke Requests to Scalable Intelligence</div>
+        <div class="persona-card-lead">"Every congress triggers another one-off request — how do we make intelligence reusable and cumulative?"</div>
+        <ul class="persona-bullets">
+          <li>Congress monitoring outputs that are reusable, cumulative and available across all functions simultaneously</li>
+          <li>Biomarker landscape and patient segmentation intelligence on demand</li>
+          <li>Comparative efficacy and safety benchmarking with living libraries and version control</li>
+        </ul>
+        <div class="persona-cta"><a href="#contact">Talk to us about Insights →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ADVANTAGE ── -->
+<section id="advantage" class="section">
+  <div class="container">
+    <span class="label">The Mito Advantage</span>
+    <h2 class="section-title">Why generic AI cannot solve this</h2>
+    <p class="section-sub">Four structural problems in oncology intelligence that general-purpose LLMs cannot address — and how Mito AI solves each one.</p>
+    <div class="adv-grid reveal">
+      <div class="adv-card">
+        <div class="adv-num">01</div>
+        <div class="adv-title">The Lexicon Challenge</div>
+        <div class="adv-answer">Mito Answer</div>
+        <div class="adv-text">Different names, acronyms and contexts for the same clinical concept. Mito AI resolves this through entity normalisation and disambiguation across the full oncology evidence base — unified in our knowledge mesh.</div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">02</div>
+        <div class="adv-title">The Relevance Problem</div>
+        <div class="adv-answer">Mito Answer</div>
+        <div class="adv-text">Evidence only matters in a specific setting, line, population and biomarker context. We decompose science into atomic units and layer proprietary data constructs that encode relevance into every answer.</div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">03</div>
+        <div class="adv-title">The Hierarchy Problem</div>
+        <div class="adv-answer">Mito Answer</div>
+        <div class="adv-text">A pivotal Phase 3 trial and a congress poster should not carry equal weight. Mito AI grounds synthesis in ranked evidence, source audit and expert review — so outputs reflect the actual evidence hierarchy.</div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num">04</div>
+        <div class="adv-title">The Governance Problem</div>
+        <div class="adv-answer">Mito Answer</div>
+        <div class="adv-text">High-stakes outputs need transparency, control, versioning and reusability. Verisight delivers editable, auditable, shareable workflows that compound institutional knowledge across every function.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ONTOLOGY ── -->
+<section id="ontology">
+  <div class="container">
+    <div class="onto-inner">
+      <div class="onto-left reveal">
+        <span class="label">Precision Built Over Years</span>
+        <h2 class="section-title">Oncology precision not replicable overnight</h2>
+        <p class="section-sub">The clinical inference architecture behind Verisight rests on a proprietary ontology built specifically for the complexity of oncology evidence — and the decisions it must support.</p>
+      </div>
+      <div class="onto-stats reveal">
+        <div class="onto-stat"><div class="onto-n">1,000+</div><div class="onto-lbl">Genes &amp; Gene Families Indexed</div></div>
+        <div class="onto-stat"><div class="onto-n">250+</div><div class="onto-lbl">Biomarkers Resolved</div></div>
+        <div class="onto-stat"><div class="onto-n">500+</div><div class="onto-lbl">Tumour Types Mapped</div></div>
+        <div class="onto-stat"><div class="onto-n">17</div><div class="onto-lbl">Tumour Groups (MECE) Covered</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENGAGEMENT ── -->
+<section id="engagement">
+  <div class="container">
+    <span class="label">Getting Started</span>
+    <h2 class="section-title">How we work together</h2>
+    <p class="section-sub">We work with a small number of biopharma partners at a time — with depth and serviced engagement to make Verisight work for your specific workflows.</p>
+    <div class="eng-steps reveal">
+      <div class="eng-step"><div class="eng-step-n">01</div><div class="eng-step-title">Mutual Discovery</div><div class="eng-step-text">Immersion session with target expert users to map your priority use cases, workflows and decision pain points.</div></div>
+      <div class="eng-step"><div class="eng-step-n">02</div><div class="eng-step-title">Pilot &amp; Feedback</div><div class="eng-step-text">6–8 week hands-on pilot with defined success criteria, collaborative workshops and iterative user feedback.</div></div>
+      <div class="eng-step"><div class="eng-step-n">03</div><div class="eng-step-title">Platform Tune-Up</div><div class="eng-step-text">Refine and configure Verisight based on pilot learnings — use case prioritisation, output formats, evidence coverage.</div></div>
+      <div class="eng-step"><div class="eng-step-n">04</div><div class="eng-step-title">Roll Out</div><div class="eng-step-text">Expand to wider teams and additional tumour areas with confidence — encoded into a proven playbook.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta-banner">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label">Next Step</span>
+      <h2 class="section-title">The next step is a conversation.</h2>
+      <p>Early partners shape the product, influence use case prioritisation and benefit from full serviced onboarding. First meaningful output in week 1. Fully configured platform by week 8.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-black">Request a Pilot</a>
+        <a href="https://www.mitochon.ai/verisight" class="btn btn-outline-white">Live: Verisight</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section id="team" class="section">
+  <div class="container" style="text-align:center;">
+    <span class="label">The Team</span>
+    <h2 class="section-title">Medical and technology expertise combined</h2>
+    <p class="section-sub" style="margin:0 auto;">Mito AI combines biopharma domain expertise, product design, data engineering and a pragmatic understanding of how pharma teams make decisions.</p>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">DT</div>
+        <div>
+          <div class="team-name">Dr. Debasish Talukdar</div>
+          <div class="team-role">Founder &amp; CEO</div>
+          <div class="team-bio">Physician · ex-Bain · Former Pharma Services CEO. Operating at the intersection of science, data and strategy for over two decades, with a specialist focus on oncology asset development and commercialisation.</div>
+          <a href="https://www.linkedin.com/in/debasishtalukdar/" target="_blank" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">MP</div>
+        <div>
+          <div class="team-name">Marzi Jehangir Patell</div>
+          <div class="team-role">Co-Founder &amp; CTO</div>
+          <div class="team-bio">Engineer · Former Digital Transformation Partner, Bain &amp; Co. Leads product design, platform architecture and delivery — with deep expertise in how clinical intelligence workflows must operate for expert users in practice.</div>
+          <a href="https://www.linkedin.com/in/marzi-jehangir-patell-2276a720/" target="_blank" class="team-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <span class="label">Get in Touch</span>
+        <h2 class="section-title">Let's talk about your use case</h2>
+        <p class="section-sub" style="margin-bottom:36px;">Contact us to ask questions, request a pilot or explore how Verisight fits your workflows.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📬</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value"><a href="mailto:contact@mitochon.ai">contact@mitochon.ai</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🏢</div>
+          <div>
+            <div class="contact-detail-label">Registered Office</div>
+            <div class="contact-detail-value">Mitochon Ltd · 9th Floor, 107 Cheapside<br />London, UK, EC2V 6DN</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🔗</div>
+          <div>
+            <div class="contact-detail-label">Follow Us</div>
+            <div class="contact-detail-value" style="display:flex;gap:16px;margin-top:4px;">
+              <a href="https://www.linkedin.com/company/mitochon-ai/" target="_blank">LinkedIn</a>
+              <a href="https://x.com/Vox_MitoAI" target="_blank">X / Twitter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form name="contact" netlify netlify-honeypot="bot-field" method="POST">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none;"><input name="bot-field" /></p>
+        <div class="form-row">
+          <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" required placeholder="Dr. Jane Smith" /></div>
+          <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" required placeholder="jane@company.com" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="org">Organisation</label><input type="text" id="org" name="organisation" placeholder="Pharma Co." /></div>
+          <div class="form-group">
+            <label for="function">Your Function</label>
+            <select id="function" name="function">
+              <option value="">Select function…</option>
+              <option>Medical Affairs</option>
+              <option>Clinical Development</option>
+              <option>Business Development</option>
+              <option>Early Commercial / NPP</option>
+              <option>Insights &amp; Analytics</option>
+              <option>Executive / Strategy</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us about your priority use case or what you'd like to explore…"></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">
+        <span class="footer-logo-svg"><svg width="1422" height="505" viewBox="0 0 1422 505" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 505L149.835 355.165H116.538V194.231L172.033 249.725L260.824 160.934L99.8901 0L0 99.8901V505Z" fill="white"/><path d="M455.084 405.11H332.997V239.9L172.062 283.022L455.084 0V405.11Z" fill="#AB5EFF"/><path d="M1421.61 157.238V340.875H1382.78V157.238H1421.61Z" fill="white"/><path d="M1225.54 340.875H1183.94L1247.33 157.238H1297.37L1360.67 340.875H1319.06L1273.07 199.202H1271.63L1225.54 340.875ZM1222.94 268.693H1321.22V299.001H1222.94V268.693Z" fill="white"/><path d="M1042.08 343.565C1028.16 343.565 1016.11 340.606 1005.95 334.688C995.847 328.71 988.046 320.401 982.546 309.761C977.047 299.06 974.297 286.657 974.297 272.549C974.297 258.322 977.047 245.888 982.546 235.248C988.046 224.548 995.847 216.239 1005.95 210.321C1016.11 204.343 1028.16 201.354 1042.08 201.354C1056.01 201.354 1068.03 204.343 1078.13 210.321C1088.29 216.239 1096.12 224.548 1101.62 235.248C1107.12 245.888 1109.87 258.322 1109.87 272.549C1109.87 286.657 1107.12 299.06 1101.62 309.761C1096.12 320.401 1088.29 328.71 1078.13 334.688C1068.03 340.606 1056.01 343.565 1042.08 343.565ZM1042.26 313.975C1048.6 313.975 1053.89 312.182 1058.13 308.595C1062.38 304.948 1065.58 299.987 1067.73 293.71C1069.94 287.434 1071.05 280.29 1071.05 272.28C1071.05 264.27 1069.94 257.126 1067.73 250.85C1065.58 244.573 1062.38 239.612 1058.13 235.965C1053.89 232.319 1048.6 230.496 1042.26 230.496C1035.87 230.496 1030.49 232.319 1026.12 235.965C1021.82 239.612 1018.56 244.573 1016.35 250.85C1014.2 257.126 1013.12 264.27 1013.12 272.28C1013.12 280.29 1014.2 287.434 1016.35 293.71C1018.56 299.987 1021.82 304.948 1026.12 308.595C1030.49 312.182 1035.87 313.975 1042.26 313.975Z" fill="white"/><path d="M956.484 203.148V231.841H873.543V203.148H956.484ZM892.373 170.151H930.571V298.553C930.571 302.08 931.109 304.829 932.185 306.802C933.261 308.715 934.755 310.06 936.668 310.837C938.641 311.614 940.912 312.003 943.483 312.003C945.276 312.003 947.069 311.853 948.863 311.554C950.656 311.196 952.031 310.927 952.987 310.747L958.995 339.172C957.082 339.769 954.392 340.457 950.925 341.234C947.458 342.071 943.244 342.579 938.282 342.758C929.076 343.117 921.006 341.891 914.072 339.082C907.198 336.272 901.848 331.909 898.022 325.991C894.196 320.073 892.313 312.6 892.373 303.574V170.151Z" fill="white"/><path d="M814.415 340.875V203.148H852.613V340.875H814.415ZM833.604 185.394C827.925 185.394 823.053 183.511 818.988 179.745C814.983 175.919 812.98 171.346 812.98 166.026C812.98 160.766 814.983 156.253 818.988 152.487C823.053 148.661 827.925 146.748 833.604 146.748C839.283 146.748 844.125 148.661 848.13 152.487C852.194 156.253 854.227 160.766 854.227 166.026C854.227 171.346 852.194 175.919 848.13 179.745C844.125 183.511 839.283 185.394 833.604 185.394Z" fill="white"/><path d="M584.102 157.238H631.983L682.555 280.619H684.707L735.279 157.238H783.161V340.875H745.501V221.35H743.976L696.453 339.978H670.809L623.286 220.901H621.761V340.875H584.102V157.238Z" fill="white"/></svg></span>
+      </a>
+      <div class="footer-mid">
+        <a href="#why">Why Mito AI</a>
+        <a href="#verisight">Verisight</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="/blog">Blog</a>
+        <a href="/insights">Insights</a>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="https://app.mitochon.ai">Login</a>
+      </div>
+      <span class="footer-copy">© 2025 Mitochon Ltd</span>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/mitochon-ai/" target="_blank" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/Vox_MitoAI" target="_blank" class="social-link" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+  function filterPersona(persona, btn) {
+    document.querySelectorAll('.persona-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.persona-card').forEach(card => {
+      card.classList.toggle('visible', persona === 'all' || card.dataset.persona === persona);
+    });
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>
