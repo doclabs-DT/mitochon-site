@@ -38,29 +38,28 @@ For years, roughly 70% of patients presenting with frontline metastatic TNBC wer
 Meanwhile, the curative setting is cementing benchmarks that alter the downstream volume of recurrent disease.
 
 * **The High-Water Mark:** Freshly updated 7-year data from the landmark **KEYNOTE-522** trial has locked in a **7-year Event-Free Survival (EFS) rate of 78.3%** for perioperative neoadjuvant pembrolizumab + chemo.
-* **The Downstream Impact:** Because more patients are achieving a Pathological Complete Response (pCR), the pool of patients moving into the adjuvant phase with residual disease (the non-pCR track in the upper right quadrant of the maps) is shrinking but becoming intensely complex. This directly alters how teams calculate downstream market sizing for metastatic assets. 
 
-  \
+**The Downstream Impact:** Because more patients are achieving a Pathological Complete Response (pCR), the pool of patients moving into the adjuvant phase with residual disease (the non-pCR track in the upper right quadrant of the maps) is shrinking but becoming intensely complex. This directly alters how teams calculate downstream market sizing for metastatic assets. 
 
-  \
+**Visualizing the Friction: Today’s Execution vs. Tomorrow’s Trends**
 
-  **Visualizing the Friction: Today’s Execution vs. Tomorrow’s Trends**
 * To maintain commercial agility, leadership teams have to separate the strict boundaries of what is executable today from the clinical trends looming on the horizon.
 * **Diagram 1 (The Approved Reality):** This is your active commercial playing field. It maps out clean, deterministic decisions based on *gBRCA1/2* mutations and *PD-L1 CPS* scores, while managing the post-progression TROP2 pivot between established champions like Sacituzumab govitecan based on HER2-low vs. HER2-0 expressions.
 
   ![Treatment Sequencing](/images/uploads/approved-standard-of-care-sequencing-for-triple-negative-breast-cancer-tnbc-_vf_page-0001.jpg "Current Standard of Care: TNBC")
 
   * **Diagram 2 (The Horizon Overlay):** This is your predictive flux layer. It ingests ongoing trials like **ASCENT-04** (Sacituzumab Govitecan + Pembrolizumab) and **TORCHLIGHT** (Toripalimab combos). It signals exactly where the next frontline fragmentations will occur, utilizing pipeline frameworks like FUTURE and ROSETTA to map out the next competitive battlegrounds.
-* ![Treatment Sequencing (Approved + Investigational Overlay)](/images/uploads/tnbc-treatment-sequence-approved-investigational_vf_page-0001-1-.jpg "Future Evolving Standard of Care: TNBC")
 
-  ### The Capability: Moving at the Velocity of Medicine
+![Treatment Sequencing (Approved + Investigational Overlay)](/images/uploads/tnbc_treatment_sequence_vector.svg "Future Evolving Standard of Care: TNBC")
 
-  This is where the clinical complexity becomes a commercial problem. When the science shifts on a Friday, a global pharmaceutical enterprise cannot afford to spend three months updating internal presentations, training modules, and market forecasts. 
+### The Capability: Moving at the Velocity of Medicine
 
-  This TNBC case study is not just a clinical update - it’s a demonstration of what is possible when structured computational logic is applied to medical data: static guidelines transformed into Dynamic Clinical Architecture. 
+This is where the clinical complexity becomes a commercial problem. When the science shifts on a Friday, a global pharmaceutical enterprise cannot afford to spend three months updating internal presentations, training modules, and market forecasts. 
 
-  Instead of treating therapeutic maps as historical documents, this framework treats them as living data structures. When new regulatory approvals or ASCO abstract data enter the system, the platform allows you to update the decision nodes, re-route the sequential pathways, and highlight the resulting commercial drift - moving your organisation from a reactive posture to a proactive one, ensuring strategy moves at the exact same speed as the science.
+This TNBC case study is not just a clinical update - it’s a demonstration of what is possible when structured computational logic is applied to medical data: static guidelines transformed into Dynamic Clinical Architecture. 
 
-  Drop your thoughts and observations in the comments below.
+Instead of treating therapeutic maps as historical documents, this framework treats them as living data structures. When new regulatory approvals or ASCO abstract data enter the system, the platform allows you to update the decision nodes, re-route the sequential pathways, and highlight the resulting commercial drift - moving your organisation from a reactive posture to a proactive one, ensuring strategy moves at the exact same speed as the science.
 
-  **\#Oncology #ASCO26 #BreastCancer #TNBC #PharmaStrategy #MedicalAffairs #OncologyCommercial #ClinicalArchitecture #AI**
+Drop your thoughts and observations in the comments below.
+
+**\#Oncology #ASCO26 #BreastCancer #TNBC #PharmaStrategy #MedicalAffairs #OncologyCommercial #ClinicalArchitecture #AI**
