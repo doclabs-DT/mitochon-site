@@ -10,3 +10,13 @@
   from = "/insights"
   to = "/insights/"
   status = 301
+
+[[redirects]]
+  from = "/posts/blog/:slug/"
+  to = "/posts/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/posts/insights/:slug/"
+  to = "/posts/insights/index.html"
+  status = 200
