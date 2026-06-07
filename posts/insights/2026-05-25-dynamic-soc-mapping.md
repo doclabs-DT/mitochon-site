@@ -2,8 +2,7 @@
 title: Dynamic Standard of Care Mapping
 date: 2026-05-25T20:58:00.000+01:00
 tag: soc
-excerpt: In a space as volatile as Triple-Negative Breast Cancer, static
-  clinical roadmaps become obsolete the moment a landmark trial reads out.
+excerpt: From Static Clinical Treatment Maps to Dynamic Views
 featured: false
 ---
 Imagine you are leading an oncology brand or clinical development team and the entire ground shifts beneath your feet over a single weekend
