@@ -15,17 +15,13 @@ Several trials reported results in cancers where meaningful progress has histori
 
 In BRAF V600E metastatic colorectal cancer, the BREAKWATER trial showed the triplet combination of encorafenib, cetuximab, and FOLFIRI nearly doubled median PFS (15.2 vs 8.3 months; HR 0.44). Results in relapsed/metastatic head and neck cancer and uveal melanoma followed a similar pattern of significant hazard ratio reductions.
 
-![](/images/uploads/mito-asco2026-hazard-ratios.svg "Impressive survival gains and HR in 7 tumor types")
-
-
+![](/images/uploads/mito-asco2026-hazard-ratios-2.svg "Impressive survival gains and HR in 7 tumor types")
 
 ## 2. Curative Intent Is Being Reshaped
 
 A major theme was the successful use of systemic therapies earlier in the disease course. In RET-fusion positive NSCLC, adjuvant selpercatinib reduced the risk of recurrence or death by over 80% (HR 0.172), with 2-year event-free survival of 91.5% versus 61.1%. In rectal cancer, a novel neoadjuvant immunochemoradiotherapy regimen more than doubled pathologic complete response rates compared to conventional chemoradiotherapy (61.4% vs 28.6%).
 
 Perioperative apalutamide in localized prostate cancer, neoadjuvant chemoradiotherapy in gastric cancer, and neoadjuvant daromun in melanoma all demonstrated meaningful DFS and OS benefits — reinforcing that moving effective agents earlier continues to change outcomes.
-
-
 
 ## 3. Next-Generation Modalities Are Now Phase 3 Winners
 
@@ -34,8 +30,6 @@ Bispecific antibodies, antibody-drug conjugates, CELMoDs, and TIL cell therapy e
 Ivonescimab (a PD-1×VEGF bispecific) combined with chemotherapy improved OS over PD-1 inhibitor alone in first-line squamous NSCLC (27.9 vs 23.7 months; HR 0.66). In triple-negative breast cancer, iza-bren achieved a PFS of 8.5 vs 3.1 months (HR 0.29) versus chemotherapy. In relapsed/refractory multiple myeloma, mezigdomide plus Kd more than doubled PFS compared to Kd alone (18.0 vs 8.3 months; HR 0.48). GC101 TIL therapy in anti-PD-1-resistant melanoma raised ORR from 5.4% to 45.2%.
 
 ![Novel Modality Phase 3 Trials that beat SoC](/images/uploads/mito-asco2026-pfs-modalities.svg "Novel Modality Phase 3 Trials that beat SoC")
-
-
 
 ## 4. ctDNA Is Now Guiding Treatment Decisions
 
@@ -47,15 +41,11 @@ Multi-cancer early detection tests (NHS-Galleri, PATHFINDER 2) increased detecti
 
 ![ctDNA: from biomarker to clinical tool](/images/uploads/mito-asco2026-ctdna-schematic.svg "ctDNA: from biomarker to clinical tool")
 
-
-
 ## 5. Important Negative Trials That Also Change Practice
 
 Negative trials matter. Adding thoracic radiotherapy to chemo-immunotherapy in extensive-stage SCLC was stopped early after it was associated with worse OS (HR 1.12) — an important signal that this approach may cause harm. Low-dose aspirin added to adjuvant chemotherapy in stage III colorectal cancer did not improve disease-free survival. Giredestrant plus palbociclib in first-line ER+/HER2- breast cancer failed to beat standard of care.
 
 These results prevent ineffective treatments from entering routine use — which is just as valuable as a positive trial.
-
-
 
 ## The Takeaway
 
