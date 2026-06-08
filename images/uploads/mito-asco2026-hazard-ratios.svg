@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480" width="680" height="480" font-family="Arial, Helvetica, sans-serif">
+
+  <rect width="680" height="480" fill="#ffffff"/>
+
+  <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#0D1B2A">Hazard ratios - key ASCO 2026 trials</text>
+  <text x="340" y="46" text-anchor="middle" font-size="11" fill="#5F5E5A">Lower HR = greater treatment benefit</text>
+
+  <rect x="30" y="56" width="12" height="12" fill="#02C39A"/>
+  <text x="48" y="67" font-size="11" fill="#5F5E5A">Hazard Ratio</text>
+  <line x1="560" y1="460" x2="650" y2="460" stroke="#B4B2A9" stroke-width="0.5"/>
+
+  <!-- Y axis label -->
+  <text x="18" y="280" text-anchor="middle" font-size="11" fill="#888780" transform="rotate(-90,18,280)">Hazard Ratio</text>
+
+  <!-- Grid lines and x-axis labels -->
+  <!-- x scale: 0 to 1.1, plotted area x=70..640, y bottom=440, y top=80 -->
+  <!-- bar height area = 360px for 7 bars, each bar slot = ~46px, gap 8px, bar height 30px -->
+
+  <!-- Horizontal grid lines at HR 0.0, 0.2, 0.4, 0.6, 0.8, 1.0 -->
+  <!-- x=70 is HR=0, x=640 is HR=1.1 => scale = 570/1.1 = 518.18px per unit -->
+
+  <line x1="70" y1="440" x2="640" y2="440" stroke="#D3D1C7" stroke-width="0.5"/>
+  <line x1="70" y1="80"  x2="70"  y2="440" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Grid verticals at 0.2 intervals -->
+  <line x1="164" y1="80" x2="164" y2="440" stroke="#F1EFE8" stroke-width="0.5"/>
+  <line x1="258" y1="80" x2="258" y2="440" stroke="#F1EFE8" stroke-width="0.5"/>
+  <line x1="352" y1="80" x2="352" y2="440" stroke="#F1EFE8" stroke-width="0.5"/>
+  <line x1="446" y1="80" x2="446" y2="440" stroke="#F1EFE8" stroke-width="0.5"/>
+  <line x1="540" y1="80" x2="540" y2="440" stroke="#D3D1C7" stroke-width="1"/>
+
+  <!-- x axis tick labels: 0.0, 0.2, 0.4, 0.6, 0.8, 1.0 -->
+  <text x="70"  y="456" text-anchor="middle" font-size="10" fill="#888780">0.0</text>
+  <text x="164" y="456" text-anchor="middle" font-size="10" fill="#888780">0.2</text>
+  <text x="258" y="456" text-anchor="middle" font-size="10" fill="#888780">0.4</text>
+  <text x="352" y="456" text-anchor="middle" font-size="10" fill="#888780">0.6</text>
+  <text x="446" y="456" text-anchor="middle" font-size="10" fill="#888780">0.8</text>
+  <text x="540" y="456" text-anchor="middle" font-size="10" fill="#888780">1.0</text>
+
+  <!-- HR=1.0 reference label -->
+  <text x="540" y="76" text-anchor="middle" font-size="10" fill="#A32D2D">HR 1.0</text>
+
+  <!-- Bars: x_bar = 70 + HR * 518.18, y positions spaced 54px apart from y=92 -->
+  <!-- slot centres: 107, 161, 215, 269, 323, 377, 431 -->
+  <!-- bar top = centre-15, bar bottom = centre+15 -->
+
+  <!-- 1. LIBRETTO-432 HR 0.172 => width = 0.172*518.18 = 89.1 -->
+  <rect x="70" y="92" width="89" height="30" rx="3" fill="#02C39A"/>
+  <text x="59" y="112" text-anchor="end" font-size="11" fill="#444441">LIBRETTO-432</text>
+  <text x="165" y="112" font-size="11" font-weight="600" fill="#0F6E56">0.17</text>
+  <text x="59" y="124" text-anchor="end" font-size="10" fill="#888780">adj. NSCLC</text>
+
+  <!-- 2. CIRCULATE HR 0.21 => width = 0.21*518.18 = 108.8 -->
+  <rect x="70" y="146" width="109" height="30" rx="3" fill="#02C39A"/>
+  <text x="59" y="166" text-anchor="end" font-size="11" fill="#444441">CIRCULATE</text>
+  <text x="185" y="166" font-size="11" font-weight="600" fill="#0F6E56">0.21</text>
+  <text x="59" y="178" text-anchor="end" font-size="10" fill="#888780">Stage II CRC</text>
+
+  <!-- 3. SARC041 HR 0.39 => width = 0.39*518.18 = 202.1 -->
+  <rect x="70" y="200" width="202" height="30" rx="3" fill="#1D9E75"/>
+  <text x="59" y="220" text-anchor="end" font-size="11" fill="#444441">SARC041</text>
+  <text x="278" y="220" font-size="11" font-weight="600" fill="#0F6E56">0.39</text>
+  <text x="59" y="232" text-anchor="end" font-size="10" fill="#888780">Liposarcoma</text>
+
+  <!-- 4. RASolute 302 HR 0.40 => width = 0.40*518.18 = 207.3 -->
+  <rect x="70" y="254" width="207" height="30" rx="3" fill="#1D9E75"/>
+  <text x="59" y="274" text-anchor="end" font-size="11" fill="#444441">RASolute 302</text>
+  <text x="283" y="274" font-size="11" font-weight="600" fill="#0F6E56">0.40</text>
+  <text x="59" y="286" text-anchor="end" font-size="10" fill="#888780">Pancreatic</text>
+
+  <!-- 5. OptimUM-02 HR 0.42 => width = 0.42*518.18 = 217.6 -->
+  <rect x="70" y="308" width="218" height="30" rx="3" fill="#1D9E75"/>
+  <text x="59" y="328" text-anchor="end" font-size="11" fill="#444441">OptimUM-02</text>
+  <text x="294" y="328" font-size="11" font-weight="600" fill="#0F6E56">0.42</text>
+  <text x="59" y="340" text-anchor="end" font-size="10" fill="#888780">Uveal melanoma</text>
+
+  <!-- 6. BREAKWATER HR 0.44 => width = 0.44*518.18 = 228.0 -->
+  <rect x="70" y="362" width="228" height="30" rx="3" fill="#1D9E75"/>
+  <text x="59" y="382" text-anchor="end" font-size="11" fill="#444441">BREAKWATER</text>
+  <text x="304" y="382" font-size="11" font-weight="600" fill="#0F6E56">0.44</text>
+  <text x="59" y="394" text-anchor="end" font-size="10" fill="#888780">BRAF mCRC</text>
+
+  <!-- 7. LBA6007 HR 0.565 => width = 0.565*518.18 = 292.8 -->
+  <rect x="70" y="416" width="293" height="30" rx="3" fill="#0F6E56"/>
+  <text x="59" y="436" text-anchor="end" font-size="11" fill="#444441">LBA6007</text>
+  <text x="369" y="436" font-size="11" font-weight="600" fill="#0F6E56">0.57</text>
+  <text x="59" y="448" text-anchor="end" font-size="10" fill="#888780">HNSCC</text>
+
+  <text x="340" y="474" text-anchor="middle" font-size="10" fill="#B4B2A9">Source: ASCO 2026 late-breaking abstracts · Mito AI analysis</text>
+</svg>
