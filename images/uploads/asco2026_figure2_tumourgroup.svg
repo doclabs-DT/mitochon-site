@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="760" height="460" fill="#f5f2eb"/>
+
+  <!-- Title block -->
+  <rect x="0" y="0" width="760" height="60" fill="#0d0d0d"/>
+  <text x="24" y="34" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#f5f2eb">FIH Assets by Tumour Group — ASCO 2026</text>
+  <text x="24" y="50" font-family="Courier New, monospace" font-size="9" fill="#aaa9a0" letter-spacing="1">TITLE-BASED ANALYSIS · MITO AI VERISIGHT · N≈100 ASSETS · PRELIMINARY</text>
+
+  <!-- Y axis: 0 to 50, 10 units = 54px, so 1 unit = 5.4px. Max bar height = 50*5.4 = 270. Bottom at y=370, top at y=100 -->
+  <!-- Grid lines horizontal -->
+  <line x1="50" y1="370" x2="720" y2="370" stroke="#0d0d0d" stroke-width="1.5"/>
+  <line x1="50" y1="370" x2="50" y2="100" stroke="#0d0d0d" stroke-width="1.5"/>
+  <line x1="50" y1="316" x2="720" y2="316" stroke="#d4cec2" stroke-width="0.6" stroke-dasharray="3,3"/>
+  <line x1="50" y1="262" x2="720" y2="262" stroke="#d4cec2" stroke-width="0.6" stroke-dasharray="3,3"/>
+  <line x1="50" y1="208" x2="720" y2="208" stroke="#d4cec2" stroke-width="0.6" stroke-dasharray="3,3"/>
+  <line x1="50" y1="154" x2="720" y2="154" stroke="#d4cec2" stroke-width="0.6" stroke-dasharray="3,3"/>
+  <line x1="50" y1="100" x2="720" y2="100" stroke="#d4cec2" stroke-width="0.6" stroke-dasharray="3,3"/>
+
+  <!-- Y axis labels: 0,10,20,30,40,50 -->
+  <text x="44" y="374" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">0</text>
+  <text x="44" y="320" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">10</text>
+  <text x="44" y="266" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">20</text>
+  <text x="44" y="212" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">30</text>
+  <text x="44" y="158" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">40</text>
+  <text x="44" y="104" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="end">50</text>
+  <text x="24" y="240" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="middle" transform="rotate(-90 24 240)" letter-spacing="1">ASSETS</text>
+
+  <!-- Bars: bar width 46px, gap 12px, starting x=58
+       Scale: 1 unit = 5.4px, bar top = 370 - (count * 5.4)
+       Columns (left to right): Pan Tumour(48), Lung(5), CNS(5), Prostate(4), HPB(4), Breast(3), Melanoma(3), Leukemias(2), Lymphomas(2), Myeloma(2), Sarcoma(2), GU(3), Gynaec(2), Other(3)
+       x positions: 58, 116, 174, 232, 290, 348, 406, 464, 522, 580, 638, 696 — need to compress, use 52px total column -->
+
+  <!-- Pan Tumour: 48 → top = 370 - 259.2 = 110.8 ≈ 111 -->
+  <rect x="58" y="111" width="44" height="259" fill="#c8351b"/>
+  <text x="80" y="106" font-family="Courier New, monospace" font-size="9" fill="#c8351b" text-anchor="middle" font-weight="bold">48</text>
+  <text x="80" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 80 390)">Pan Tumour</text>
+
+  <!-- Lung: 5 → top = 370 - 27 = 343 -->
+  <rect x="114" y="343" width="44" height="27" fill="#1b5fc8"/>
+  <text x="136" y="338" font-family="Courier New, monospace" font-size="9" fill="#1b5fc8" text-anchor="middle" font-weight="bold">5</text>
+  <text x="136" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 136 390)">Lung</text>
+
+  <!-- CNS: 5 -->
+  <rect x="170" y="343" width="44" height="27" fill="#1b5fc8" opacity="0.6"/>
+  <text x="192" y="338" font-family="Courier New, monospace" font-size="9" fill="#1b5fc8" text-anchor="middle" font-weight="bold">5</text>
+  <text x="192" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 192 390)">CNS</text>
+
+  <!-- Prostate: 4 → top = 370 - 21.6 = 348 -->
+  <rect x="226" y="348" width="44" height="22" fill="#5c4a8a"/>
+  <text x="248" y="343" font-family="Courier New, monospace" font-size="9" fill="#5c4a8a" text-anchor="middle" font-weight="bold">4</text>
+  <text x="248" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 248 390)">Prostate</text>
+
+  <!-- HPB: 4 -->
+  <rect x="282" y="348" width="44" height="22" fill="#0d7a5a"/>
+  <text x="304" y="343" font-family="Courier New, monospace" font-size="9" fill="#0d7a5a" text-anchor="middle" font-weight="bold">4</text>
+  <text x="304" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 304 390)">HPB</text>
+
+  <!-- Breast: 3 → top = 370 - 16.2 = 354 -->
+  <rect x="338" y="354" width="44" height="16" fill="#e07b00"/>
+  <text x="360" y="349" font-family="Courier New, monospace" font-size="9" fill="#e07b00" text-anchor="middle" font-weight="bold">3</text>
+  <text x="360" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 360 390)">Breast</text>
+
+  <!-- Melanoma: 3 -->
+  <rect x="394" y="354" width="44" height="16" fill="#7a7267"/>
+  <text x="416" y="349" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="middle" font-weight="bold">3</text>
+  <text x="416" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 416 390)">Melanoma</text>
+
+  <!-- GU Non-Prostate: 3 -->
+  <rect x="450" y="354" width="44" height="16" fill="#b5510c"/>
+  <text x="472" y="349" font-family="Courier New, monospace" font-size="9" fill="#b5510c" text-anchor="middle" font-weight="bold">3</text>
+  <text x="472" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 472 390)">GU (non-P)</text>
+
+  <!-- Leukemias: 2 → top = 370 - 10.8 = 359 -->
+  <rect x="506" y="359" width="44" height="11" fill="#2d6a4f"/>
+  <text x="528" y="354" font-family="Courier New, monospace" font-size="9" fill="#2d6a4f" text-anchor="middle" font-weight="bold">2</text>
+  <text x="528" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 528 390)">Leukemias</text>
+
+  <!-- Lymphomas: 2 -->
+  <rect x="562" y="359" width="44" height="11" fill="#2d6a4f" opacity="0.65"/>
+  <text x="584" y="354" font-family="Courier New, monospace" font-size="9" fill="#2d6a4f" text-anchor="middle" font-weight="bold">2</text>
+  <text x="584" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 584 390)">Lymphomas</text>
+
+  <!-- Myeloma: 2 -->
+  <rect x="618" y="359" width="44" height="11" fill="#c84d8a"/>
+  <text x="640" y="354" font-family="Courier New, monospace" font-size="9" fill="#c84d8a" text-anchor="middle" font-weight="bold">2</text>
+  <text x="640" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 640 390)">Myeloma</text>
+
+  <!-- Sarcoma / Other: 2 -->
+  <rect x="674" y="359" width="44" height="11" fill="#aaa9a0"/>
+  <text x="696" y="354" font-family="Courier New, monospace" font-size="9" fill="#7a7267" text-anchor="middle" font-weight="bold">≥2</text>
+  <text x="696" y="390" font-family="Georgia, serif" font-size="9" fill="#0d0d0d" text-anchor="middle" transform="rotate(-40 696 390)">Other</text>
+
+  <!-- Caption -->
+  <text x="24" y="449" font-family="Courier New, monospace" font-size="8.5" fill="#7a7267">Figure 2 · Pan Tumour dominates, reflecting the basket FIH design paradigm. Lung, CNS and Prostate show the highest non-agnostic FIH activity at ASCO 2026.</text>
+</svg>
