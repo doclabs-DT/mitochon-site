@@ -7,7 +7,7 @@ featured: false
 ---
 The 2026 ASCO Annual Meeting delivered some of the most striking survival data in recent oncology history. Across late-breaking abstracts, a clear picture emerged: precision therapies are maturing, novel modalities are outperforming established standards, and biomarker-guided treatment is becoming the norm rather than the exception.
 
-Here are the five themes that define what's changing in practice — and what's not.
+Here are the five themes that define what's changing in practice - and what's not.
 
 ## 1. Unprecedented Survival Gains in Hard-to-Treat Tumors
 
@@ -21,7 +21,7 @@ In BRAF V600E metastatic colorectal cancer, the BREAKWATER trial showed the trip
 
 A major theme was the successful use of systemic therapies earlier in the disease course. In RET-fusion positive NSCLC, adjuvant selpercatinib reduced the risk of recurrence or death by over 80% (HR 0.172), with 2-year event-free survival of 91.5% versus 61.1%. In rectal cancer, a novel neoadjuvant immunochemoradiotherapy regimen more than doubled pathologic complete response rates compared to conventional chemoradiotherapy (61.4% vs 28.6%).
 
-Perioperative apalutamide in localized prostate cancer, neoadjuvant chemoradiotherapy in gastric cancer, and neoadjuvant daromun in melanoma all demonstrated meaningful DFS and OS benefits — reinforcing that moving effective agents earlier continues to change outcomes.
+Perioperative apalutamide in localized prostate cancer, neoadjuvant chemoradiotherapy in gastric cancer, and neoadjuvant daromun in melanoma all demonstrated meaningful DFS and OS benefits - reinforcing that moving effective agents earlier continues to change outcomes.
 
 ## 3. Next-Generation Modalities Are Now Phase 3 Winners
 
@@ -35,7 +35,7 @@ Ivonescimab (a PD-1×VEGF bispecific) combined with chemotherapy improved OS ove
 
 Circulating tumour DNA moved from exploratory biomarker to actionable clinical tool across multiple disease settings.
 
-The CIRCULATE trial was the first randomised study to show adjuvant chemotherapy improves outcomes in ctDNA-positive stage II colon cancer patients — reducing 3-year recurrence from 62% to 19% (HR 0.21). In EGFR-mutant NSCLC, the FLAME trial showed that escalating to chemo-IO based on persistent ctDNA after early osimertinib significantly improved PFS (23.1 vs 12.7 months; HR 0.53). SERENA-6 demonstrated that switching therapy upon ctDNA detection of an ESR1 mutation improved outcomes in advanced breast cancer.
+The CIRCULATE trial was the first randomised study to show adjuvant chemotherapy improves outcomes in ctDNA-positive stage II colon cancer patients - reducing 3-year recurrence from 62% to 19% (HR 0.21). In EGFR-mutant NSCLC, the FLAME trial showed that escalating to chemo-IO based on persistent ctDNA after early osimertinib significantly improved PFS (23.1 vs 12.7 months; HR 0.53). SERENA-6 demonstrated that switching therapy upon ctDNA detection of an ESR1 mutation improved outcomes in advanced breast cancer.
 
 Multi-cancer early detection tests (NHS-Galleri, PATHFINDER 2) increased detection of Stage I/II cancers, though mortality impact is still under investigation.
 
@@ -43,12 +43,12 @@ Multi-cancer early detection tests (NHS-Galleri, PATHFINDER 2) increased detecti
 
 ## 5. Important Negative Trials That Also Change Practice
 
-Negative trials matter. Adding thoracic radiotherapy to chemo-immunotherapy in extensive-stage SCLC was stopped early after it was associated with worse OS (HR 1.12) — an important signal that this approach may cause harm. Low-dose aspirin added to adjuvant chemotherapy in stage III colorectal cancer did not improve disease-free survival. Giredestrant plus palbociclib in first-line ER+/HER2- breast cancer failed to beat standard of care.
+Negative trials matter. Adding thoracic radiotherapy to chemo-immunotherapy in extensive-stage SCLC was stopped early after it was associated with worse OS (HR 1.12) - an important signal that this approach may cause harm. Low-dose aspirin added to adjuvant chemotherapy in stage III colorectal cancer did not improve disease-free survival. Giredestrant plus palbociclib in first-line ER+/HER2- breast cancer failed to beat standard of care.
 
-These results prevent ineffective treatments from entering routine use — which is just as valuable as a positive trial.
+These results prevent ineffective treatments from entering routine use - which is just as valuable as a positive trial.
 
 ## The Takeaway
 
-ASCO 2026 reflects a field accelerating in precision and confidence. The most dramatic results came from targeted therapies in previously difficult-to-treat tumours, earlier use of proven agents, and biomarker-driven treatment adaptation. The maturation of ctDNA as a clinical tool — combined with next-generation modalities posting phase 3 wins — signals that oncology in 2026 is increasingly personalised, dynamic, and effective.
+ASCO 2026 reflects a field accelerating in precision and confidence. The most dramatic results came from targeted therapies in previously difficult-to-treat tumours, earlier use of proven agents, and biomarker-driven treatment adaptation. The maturation of ctDNA as a clinical tool - combined with next-generation modalities posting phase 3 wins - signals that oncology in 2026 is increasingly personalised, dynamic, and effective.
 
 *This analysis was generated by Mito AI. For review and appropriate use only.*
