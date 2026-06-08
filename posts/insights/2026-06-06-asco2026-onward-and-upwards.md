@@ -1,5 +1,5 @@
 ---
-title: ASCO2026 - Onward and Upwards!
+title: ASCO2026 - Onwards and Upwards!
 date: 2026-06-06T11:59:00.000+01:00
 tag: congress
 excerpt: Oncology just had its most transformative meeting in years
