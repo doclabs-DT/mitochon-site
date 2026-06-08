@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading... — Mito AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple:#A345F6;--purple-light:#c07dff;--purple-dim:rgba(163,69,246,0.13);--green:#3DBA7E;--black:#0A0A0A;--ink:#111111;--ink-soft:#444444;--ink-muted:#888888;--rule:#E2E2E2;--bg:#F7F7F5;
+      --font-serif:'Cormorant Garamond',Georgia,serif;--font-sans:'Nunito Sans','Avenir Next',sans-serif;
+      --radius:14px;--radius-sm:7px;--trans:0.28s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+    .container{max-width:1180px;margin:0 auto;padding:0 32px}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:background var(--trans),padding var(--trans)}
+    nav.scrolled{background:rgba(10,10,10,0.96);backdrop-filter:blur(20px);padding:14px 0;box-shadow:0 1px 0 rgba(255,255,255,0.07)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-logo{display:flex;align-items:center;text-decoration:none}
+    .nav-logo svg{height:28px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--font-sans);font-size:.76rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;transition:color var(--trans)}
+    .nav-links a:hover,.nav-links a.active{color:white}
+    .nav-actions{display:flex;align-items:center;gap:16px}
+    .nav-login{font-family:var(--font-sans);font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none}
+    .btn{display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:12px 26px;border-radius:2px;border:none;cursor:pointer;text-decoration:none;transition:var(--trans)}
+    .btn-primary{background:var(--purple);color:white}
+    .btn-primary:hover{background:var(--purple-light);transform:translateY(-1px)}
+    .btn-black{background:var(--black);color:white}
+    .btn-black:hover{background:#282828}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:22px;height:1.5px;background:white}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:99;padding:100px 32px 40px;flex-direction:column}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:var(--font-serif);font-size:2rem;font-weight:600;color:white;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .mobile-menu a:hover{color:var(--purple-light)}
+    /* HERO */
+    .post-hero{background:var(--black);padding:160px 0 72px;position:relative;overflow:hidden}
+    .post-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:72px 72px}
+    .post-hero-glow{position:absolute;width:600px;height:500px;right:-60px;top:-60px;background:radial-gradient(ellipse,rgba(163,69,246,0.15) 0%,transparent 70%);pointer-events:none}
+    .post-hero-content{position:relative;z-index:2;max-width:800px}
+    .post-meta{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+    .post-category{font-family:var(--font-sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px}
+    .post-category::before{content:'';width:16px;height:1px;background:var(--green)}
+    .post-date{font-size:.78rem;color:rgba(255,255,255,.35)}
+    .post-hero h1{font-family:var(--font-serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:600;color:white;line-height:1.1;margin-bottom:20px}
+    .post-excerpt{font-size:1.05rem;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid var(--purple);padding-left:18px}
+    /* BODY */
+    .post-body{max-width:760px;margin:0 auto;padding:72px 32px 100px}
+    .post-body h2{font-family:var(--font-serif);font-size:1.9rem;font-weight:600;margin:48px 0 16px;color:var(--ink)}
+    .post-body h3{font-family:var(--font-serif);font-size:1.4rem;font-weight:600;margin:36px 0 12px;color:var(--ink)}
+    .post-body p{font-size:.95rem;color:var(--ink-soft);line-height:1.85;margin-bottom:20px}
+    .post-body ul,.post-body ol{padding-left:20px;margin-bottom:20px}
+    .post-body li{font-size:.95rem;color:var(--ink-soft);line-height:1.75;margin-bottom:8px}
+    .post-body blockquote{border-left:3px solid var(--purple);padding:16px 0 16px 24px;margin:32px 0}
+    .post-body blockquote p{font-family:var(--font-serif);font-size:1.15rem;font-style:italic;color:var(--ink);margin:0}
+    .post-body hr{border:none;border-top:1px solid var(--rule);margin:48px 0}
+    .post-body a{color:var(--purple);text-decoration:underline}
+    /* Images contained in text column by default, zoom on click */
+    .post-body img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      border-radius: var(--radius, 8px);
+      margin: 24px 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .post-body img:hover { opacity: 0.92; transform: scale(1.01); }
+    /* Image caption */
+    .post-body img + em {
+      display: block;
+      text-align: center;
+      font-size: .78rem;
+      color: var(--ink-muted);
+      margin-top: 10px;
+      margin-bottom: 32px;
+      font-style: normal;
+    }
+    /* Lightbox */
+    .img-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 24px;
+    }
+    .img-lightbox.open { display: flex; }
+    .img-lightbox img {
+      max-width: 95vw;
+      max-height: 92vh;
+      width: auto !important;
+      height: auto !important;
+      transform: none !important;
+      margin: 0 !important;
+      border-radius: 6px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      cursor: zoom-out;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px; right: 24px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      line-height: 1;
+      font-family: sans-serif;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .post-nav{border-top:1px solid var(--rule);padding:32px 0;display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+    .post-nav a{font-family:var(--font-sans);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap var(--trans)}
+    .post-nav a:hover{gap:14px}
+    /* CTA */
+    .cta-strip{background:var(--purple);padding:72px 0;text-align:center}
+    .cta-strip h2{font-family:var(--font-serif);font-size:2.2rem;color:white;margin-bottom:12px}
+    .cta-strip p{color:rgba(255,255,255,.75);margin-bottom:28px}
+    /* FOOTER */
+    footer{background:var(--black);padding:48px 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .footer-logo{display:flex;align-items:center;text-decoration:none}
+    .footer-logo svg{height:22px;width:auto}
+    .footer-mid{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-mid a{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.32);text-decoration:none;transition:color var(--trans)}
+    .footer-mid a:hover{color:rgba(255,255,255,.8)}
+    .footer-copy{font-size:.75rem;color:rgba(255,255,255,.22)}
+    .footer-socials{display:flex;gap:10px}
+    .social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,.1);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color var(--trans)}
+    .social-link:hover{border-color:var(--purple)}
+    .social-link svg{width:14px;height:14px;fill:rgba(255,255,255,.45)}
+    .social-link:hover svg{fill:white}
+    /* LOADING */
+    .loading{text-align:center;padding:120px 0;color:var(--ink-muted);font-family:var(--font-serif);font-size:1.2rem}
+    @media(max-width:768px){
+      .nav-links,.nav-actions{display:none}
+      .hamburger{display:flex}
+      .footer-inner{flex-direction:column;align-items:flex-start;gap:20px}
+      .post-body{padding:48px 24px 72px}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><svg width="1422" height="505" viewBox="0 0 1422 505" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 505L149.835 355.165H116.538V194.231L172.033 249.725L260.824 160.934L99.8901 0L0 99.8901V505Z" fill="white"/><path d="M455.084 405.11H332.997V239.9L172.062 283.022L455.084 0V405.11Z" fill="#AB5EFF"/><path d="M1421.61 157.238V340.875H1382.78V157.238H1421.61Z" fill="white"/><path d="M1225.54 340.875H1183.94L1247.33 157.238H1297.37L1360.67 340.875H1319.06L1273.07 199.202H1271.63L1225.54 340.875ZM1222.94 268.693H1321.22V299.001H1222.94V268.693Z" fill="white"/><path d="M1042.08 343.565C1028.16 343.565 1016.11 340.606 1005.95 334.688C995.847 328.71 988.046 320.401 982.546 309.761C977.047 299.06 974.297 286.657 974.297 272.549C974.297 258.322 977.047 245.888 982.546 235.248C988.046 224.548 995.847 216.239 1005.95 210.321C1016.11 204.343 1028.16 201.354 1042.08 201.354C1056.01 201.354 1068.03 204.343 1078.13 210.321C1088.29 216.239 1096.12 224.548 1101.62 235.248C1107.12 245.888 1109.87 258.322 1109.87 272.549C1109.87 286.657 1107.12 299.06 1101.62 309.761C1096.12 320.401 1088.29 328.71 1078.13 334.688C1068.03 340.606 1056.01 343.565 1042.08 343.565ZM1042.26 313.975C1048.6 313.975 1053.89 312.182 1058.13 308.595C1062.38 304.948 1065.58 299.987 1067.73 293.71C1069.94 287.434 1071.05 280.29 1071.05 272.28C1071.05 264.27 1069.94 257.126 1067.73 250.85C1065.58 244.573 1062.38 239.612 1058.13 235.965C1053.89 232.319 1048.6 230.496 1042.26 230.496C1035.87 230.496 1030.49 232.319 1026.12 235.965C1021.82 239.612 1018.56 244.573 1016.35 250.85C1014.2 257.126 1013.12 264.27 1013.12 272.28C1013.12 280.29 1014.2 287.434 1016.35 293.71C1018.56 299.987 1021.82 304.948 1026.12 308.595C1030.49 312.182 1035.87 313.975 1042.26 313.975Z" fill="white"/><path d="M956.484 203.148V231.841H873.543V203.148H956.484ZM892.373 170.151H930.571V298.553C930.571 302.08 931.109 304.829 932.185 306.802C933.261 308.715 934.755 310.06 936.668 310.837C938.641 311.614 940.912 312.003 943.483 312.003C945.276 312.003 947.069 311.853 948.863 311.554C950.656 311.196 952.031 310.927 952.987 310.747L958.995 339.172C957.082 339.769 954.392 340.457 950.925 341.234C947.458 342.071 943.244 342.579 938.282 342.758C929.076 343.117 921.006 341.891 914.072 339.082C907.198 336.272 901.848 331.909 898.022 325.991C894.196 320.073 892.313 312.6 892.373 303.574V170.151Z" fill="white"/><path d="M814.415 340.875V203.148H852.613V340.875H814.415ZM833.604 185.394C827.925 185.394 823.053 183.511 818.988 179.745C814.983 175.919 812.98 171.346 812.98 166.026C812.98 160.766 814.983 156.253 818.988 152.487C823.053 148.661 827.925 146.748 833.604 146.748C839.283 146.748 844.125 148.661 848.13 152.487C852.194 156.253 854.227 160.766 854.227 166.026C854.227 171.346 852.194 175.919 848.13 179.745C844.125 183.511 839.283 185.394 833.604 185.394Z" fill="white"/><path d="M584.102 157.238H631.983L682.555 280.619H684.707L735.279 157.238H783.161V340.875H745.501V221.35H743.976L696.453 339.978H670.809L623.286 220.901H621.761V340.875H584.102V157.238Z" fill="white"/></svg></a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#why">Why Mito AI</a></li>
+        <li><a href="/#verisight">Verisight</a></li>
+        <li><a href="/#use-cases">Use Cases</a></li>
+        <li><a href="/blog/" class="active">Blog</a></li>
+        <li><a href="/insights/">Insights</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://app.mitochon.ai" class="nav-login">Login</a>
+        <a href="/#contact" class="btn btn-primary" style="padding:11px 24px;font-size:.72rem;">Request Access</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="toggleMenu()">Home</a>
+  <a href="/#why" onclick="toggleMenu()">Why Mito AI</a>
+  <a href="/#verisight" onclick="toggleMenu()">Verisight</a>
+  <a href="/blog/" onclick="toggleMenu()">Blog</a>
+  <a href="/insights/" onclick="toggleMenu()">Insights</a>
+  <a href="/#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://app.mitochon.ai">Login</a>
+</div>
+
+<div id="post-hero" class="post-hero">
+  <div class="post-hero-glow"></div>
+  <div class="container">
+    <div class="post-hero-content" id="post-hero-content">
+      <div class="loading">Loading post...</div>
+    </div>
+  </div>
+</div>
+
+<div class="post-body" id="post-body"></div>
+
+<div class="cta-strip">
+  <div class="container">
+    <h2>Explore Verisight</h2>
+    <p>See how Mito AI turns clinical evidence into decision-ready intelligence.</p>
+    <a href="/#contact" class="btn btn-black">Request a Pilot</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo"><svg width="1422" height="505" viewBox="0 0 1422 505" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 505L149.835 355.165H116.538V194.231L172.033 249.725L260.824 160.934L99.8901 0L0 99.8901V505Z" fill="white"/><path d="M455.084 405.11H332.997V239.9L172.062 283.022L455.084 0V405.11Z" fill="#AB5EFF"/><path d="M1421.61 157.238V340.875H1382.78V157.238H1421.61Z" fill="white"/><path d="M1225.54 340.875H1183.94L1247.33 157.238H1297.37L1360.67 340.875H1319.06L1273.07 199.202H1271.63L1225.54 340.875ZM1222.94 268.693H1321.22V299.001H1222.94V268.693Z" fill="white"/><path d="M1042.08 343.565C1028.16 343.565 1016.11 340.606 1005.95 334.688C995.847 328.71 988.046 320.401 982.546 309.761C977.047 299.06 974.297 286.657 974.297 272.549C974.297 258.322 977.047 245.888 982.546 235.248C988.046 224.548 995.847 216.239 1005.95 210.321C1016.11 204.343 1028.16 201.354 1042.08 201.354C1056.01 201.354 1068.03 204.343 1078.13 210.321C1088.29 216.239 1096.12 224.548 1101.62 235.248C1107.12 245.888 1109.87 258.322 1109.87 272.549C1109.87 286.657 1107.12 299.06 1101.62 309.761C1096.12 320.401 1088.29 328.71 1078.13 334.688C1068.03 340.606 1056.01 343.565 1042.08 343.565ZM1042.26 313.975C1048.6 313.975 1053.89 312.182 1058.13 308.595C1062.38 304.948 1065.58 299.987 1067.73 293.71C1069.94 287.434 1071.05 280.29 1071.05 272.28C1071.05 264.27 1069.94 257.126 1067.73 250.85C1065.58 244.573 1062.38 239.612 1058.13 235.965C1053.89 232.319 1048.6 230.496 1042.26 230.496C1035.87 230.496 1030.49 232.319 1026.12 235.965C1021.82 239.612 1018.56 244.573 1016.35 250.85C1014.2 257.126 1013.12 264.27 1013.12 272.28C1013.12 280.29 1014.2 287.434 1016.35 293.71C1018.56 299.987 1021.82 304.948 1026.12 308.595C1030.49 312.182 1035.87 313.975 1042.26 313.975Z" fill="white"/><path d="M956.484 203.148V231.841H873.543V203.148H956.484ZM892.373 170.151H930.571V298.553C930.571 302.08 931.109 304.829 932.185 306.802C933.261 308.715 934.755 310.06 936.668 310.837C938.641 311.614 940.912 312.003 943.483 312.003C945.276 312.003 947.069 311.853 948.863 311.554C950.656 311.196 952.031 310.927 952.987 310.747L958.995 339.172C957.082 339.769 954.392 340.457 950.925 341.234C947.458 342.071 943.244 342.579 938.282 342.758C929.076 343.117 921.006 341.891 914.072 339.082C907.198 336.272 901.848 331.909 898.022 325.991C894.196 320.073 892.313 312.6 892.373 303.574V170.151Z" fill="white"/><path d="M814.415 340.875V203.148H852.613V340.875H814.415ZM833.604 185.394C827.925 185.394 823.053 183.511 818.988 179.745C814.983 175.919 812.98 171.346 812.98 166.026C812.98 160.766 814.983 156.253 818.988 152.487C823.053 148.661 827.925 146.748 833.604 146.748C839.283 146.748 844.125 148.661 848.13 152.487C852.194 156.253 854.227 160.766 854.227 166.026C854.227 171.346 852.194 175.919 848.13 179.745C844.125 183.511 839.283 185.394 833.604 185.394Z" fill="white"/><path d="M584.102 157.238H631.983L682.555 280.619H684.707L735.279 157.238H783.161V340.875H745.501V221.35H743.976L696.453 339.978H670.809L623.286 220.901H621.761V340.875H584.102V157.238Z" fill="white"/></svg></a>
+      <div class="footer-mid">
+        <a href="/#why">Why Mito AI</a>
+        <a href="/#verisight">Verisight</a>
+        <a href="/#use-cases">Use Cases</a>
+        <a href="/blog/">Blog</a>
+        <a href="/insights/">Insights</a>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="https://app.mitochon.ai">Login</a>
+      </div>
+      <span class="footer-copy">© 2025 Mitochon Ltd</span>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/mitochon-ai/" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://x.com/Vox_MitoAI" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/marked@9.1.6/marked.min.js"></script>
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+
+  const REPO = 'doclabs-DT/mitochon-site';
+
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) return { meta: {}, body: text };
+    const meta = {};
+    match[1].split('\n').forEach(line => {
+      const [key, ...val] = line.split(':');
+      if (key) meta[key.trim()] = val.join(':').trim().replace(/^"|"$/g, '');
+    });
+    return { meta, body: text.slice(match[0].length).trim() };
+  }
+
+  function formatDate(str) {
+    if (!str) return '';
+    return new Date(str).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  async function loadPost() {
+    // Get slug from URL: /posts/blog/my-post/ -> my-post
+    const parts = window.location.pathname.replace(/\/+$/, '').split('/');
+    const slug = parts[parts.length - 1];
+    const section = parts[parts.length - 2]; // 'blog' or 'insights'
+    const folder = section === 'insights' ? 'posts/insights' : 'posts/blog';
+    const backUrl = section === 'insights' ? '/insights/' : '/blog/';
+    const backLabel = section === 'insights' ? '← Back to Insights' : '← Back to Blog';
+
+    try {
+      // Find the matching file — CMS prefixes with date e.g. 2025-06-07-my-post.md
+      const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${folder}`);
+      const files = await res.json();
+      const file = files.find(f => f.name.endsWith('.md') && f.name.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '') === slug);
+
+      if (!file) {
+        document.getElementById('post-hero-content').innerHTML = '<h1 style="color:white">Post not found</h1>';
+        return;
+      }
+
+      const r = await fetch(file.download_url);
+      const text = await r.text();
+      const { meta, body } = parseFrontmatter(text);
+
+      // Update page title
+      document.title = (meta.title || 'Post') + ' — Mito AI';
+
+      // Render hero
+      document.getElementById('post-hero-content').innerHTML = `
+        <div class="post-meta">
+          <span class="post-category">${meta.category || meta.tag || 'Mito AI'}</span>
+          <span class="post-date">${formatDate(meta.date)}</span>
+        </div>
+        <h1>${meta.title || 'Untitled'}</h1>
+        ${meta.excerpt ? `<p class="post-excerpt">${meta.excerpt}</p>` : ''}
+      `;
+
+      // Render body
+      document.getElementById('post-body').innerHTML = marked.parse(body) + `
+        <div class="post-nav">
+          <a href="${backUrl}">${backLabel}</a>
+          <a href="/#contact">Talk to us →</a>
+        </div>`;
+
+    } catch(e) {
+      document.getElementById('post-hero-content').innerHTML = '<h1 style="color:white">Could not load post</h1>';
+      console.error(e);
+    }
+  }
+
+
+  // Image zoom lightbox
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.getElementById('img-lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('img-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Attach click handlers to images after post loads
+  function attachImageZoom() {
+    document.querySelectorAll('.post-body img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+  }
+  loadPost().then(() => setTimeout(attachImageZoom, 100));
+  // fallback
+  setTimeout(attachImageZoom, 1500);
+</script>
+
+<!-- Lightbox -->
+<div class="img-lightbox" id="img-lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+</body>
+</html>
