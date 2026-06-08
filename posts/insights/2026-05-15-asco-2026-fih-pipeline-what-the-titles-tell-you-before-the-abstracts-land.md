@@ -1,5 +1,5 @@
 ---
-title: "ASCO 2026 FIH Pipeline: What the Titles Tell You Before the Abstracts Land"
+title: ASCO 2026 FIrst-in-Human (FIH) Pipeline Intelligence
 date: 2026-05-15T11:59:00.000+01:00
 tag: bd
 excerpt: What the Titles Tell You Before the Abstracts Land
