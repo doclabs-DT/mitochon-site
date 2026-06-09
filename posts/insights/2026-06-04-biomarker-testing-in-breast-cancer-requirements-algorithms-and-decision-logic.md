@@ -1,6 +1,5 @@
 ---
-title: "Biomarker Testing in Breast Cancer: Requirements, Algorithms, and
-  Decision Logic"
+title: "Biomarker Testing in Breast Cancer: Requirements and Decision Logic"
 date: 2026-06-05T00:55:00.000+01:00
 tag: biomarkers
 excerpt: Decision Frameworks for Upfront, Reflex and Serial Longitudinal Testing
