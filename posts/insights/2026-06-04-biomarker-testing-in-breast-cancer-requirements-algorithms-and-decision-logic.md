@@ -41,8 +41,6 @@ In the metastatic setting, the testing requirement broadens substantially. Compr
 
 For TNBC, PD-L1 status by IHC is required (NCCN 1; ESMO I, A) using the 22C3 assay (CPS ≥10) for pembrolizumab eligibility, or SP142 (IC ≥1%) for atezolizumab in jurisdictions where that approval is maintained (EMA only - the FDA indication was withdrawn). These two antibody clones are not interchangeable and evaluate different scoring systems; substituting one for the other invalidates the result for regulatory purposes.
 
-
-
 ![](/images/uploads/screenshot-2026-06-10-at-00.51.34.png "Upfront Testing Sequence")
 
 - - -
@@ -75,8 +73,6 @@ Reflex testing - the automatic initiation of a downstream test based on a specif
 
 **ctDNA negative for PIK3CA/ESR1 with low tumor fraction** mandates reflex to tissue-based NGS. Diagnostic reliability of plasma NGS drops sharply below 0.1% VAF, and a negative ctDNA result in a low-tumor-fraction sample is not a true negative - it is an uninformative result that requires tissue confirmation before excluding pathway inhibitor eligibility.
 
-
-
 ![](/images/uploads/screenshot-2026-06-10-at-00.51.56.png "Reflex Testing Rules")
 
 - - -
@@ -92,8 +88,6 @@ ESR1 mutation detection by ctDNA is the paradigm case for liquid biopsy-guided t
 When ctDNA is negative with low tumor fraction, the result is technically uninformative and mandates reflex to tissue NGS rather than interpretation as biomarker-negative. This is a common failure point in real-world practice.
 
 Emerging MRD and ctDNA surveillance approaches - tumor-informed tracking assays such as RaDaR and Signatera deployed in studies like SURVIVE - are beginning to demonstrate the ability to detect molecular relapse before clinical evidence of disease. However, direct clinical decision-making based on ctDNA MRD positivity in the adjuvant setting remains investigational outside of trials.
-
-
 
 ![](/images/uploads/screenshot-2026-06-10-at-00.52.36.png "Serial Longitudinal Testing Logic")
 
@@ -124,3 +118,8 @@ Despite the breadth and clinical importance of the biomarker testing framework d
 This is not an abstract quality metric. In a disease where PIK3CA mutation rates are approximately 35-40%, ESR1 mutations emerge in 30-40% of patients after aromatase inhibitor therapy, and germline BRCA1/2 pathogenic variants are present in 5-10%, the gap between testing mandates and real-world practice translates directly into patients not receiving approved therapies for which they qualify.
 
 Strategies to close this gap - reflex testing protocols embedded in laboratory workflows, automated MGPT ordering triggered by metastatic confirmation, and molecular tumour board review at each progression event - are now as important a clinical priority as the identification of new biomarkers.
+
+
+
+*Detailed references available on request*\
+*Copyright Mitochon Ltd.*
