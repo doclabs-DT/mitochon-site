@@ -55,3 +55,6 @@ Instead of treating therapeutic maps as historical documents, this framework tre
 Drop your thoughts and observations in the comments below.
 
 **\#Oncology #ASCO26 #BreastCancer #TNBC #PharmaStrategy #MedicalAffairs #OncologyCommercial #ClinicalArchitecture #AI**
+
+*Detailed references available on request*
+*Copyright Mitochon Ltd.*
