@@ -1,0 +1,52 @@
+<svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="95" y="32" font-family="Cormorant Garamond, Georgia, serif" font-size="26" font-weight="700" fill="#111111">The dose trade-off &#8212; the best dose is not the highest</text>
+
+  <!-- therapeutic window shade (green dim) -->
+  <rect x="290" y="58" width="160" height="312" fill="#3DBA7E" opacity="0.12"/>
+  <text x="370" y="52" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="12.5" fill="#3DBA7E" font-style="italic" text-anchor="middle">therapeutic window</text>
+
+  <!-- acceptable toxicity ceiling -->
+  <line x1="95" y1="300" x2="690" y2="300" stroke="#888888" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="688" y="294" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="11.5" fill="#888888" text-anchor="end">max acceptable toxicity</text>
+
+  <!-- axes -->
+  <line x1="95" y1="370" x2="702" y2="370" stroke="#444444" stroke-width="1.6"/>
+  <polygon points="704,370 694,365 694,375" fill="#444444"/>
+  <line x1="95" y1="370" x2="95" y2="46" stroke="#444444" stroke-width="1.6"/>
+  <polygon points="95,44 90,54 100,54" fill="#444444"/>
+
+  <!-- efficacy curve (green) -->
+  <path d="M95,360 C210,356 225,160 330,125 C420,98 560,95 690,94" fill="none" stroke="#3DBA7E" stroke-width="3.6"/>
+  <text x="556" y="128" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#3DBA7E">Efficacy</text>
+
+  <!-- toxicity curve (ink/black) -->
+  <path d="M95,366 C250,364 350,356 420,318 C505,272 590,150 670,80" fill="none" stroke="#0A0A0A" stroke-width="3.2"/>
+  <text x="610" y="252" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#0A0A0A">Toxicity</text>
+
+  <!-- optimal dose marker (purple) -->
+  <line x1="345" y1="370" x2="345" y2="120" stroke="#A345F6" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <circle cx="345" cy="120" r="5" fill="#A345F6"/>
+  <text x="345" y="108" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#A345F6" text-anchor="middle">Optimal dose</text>
+
+  <!-- MTD marker -->
+  <line x1="450" y1="370" x2="450" y2="86" stroke="#888888" stroke-width="1.7" stroke-dasharray="5 4"/>
+  <text x="450" y="78" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="13" font-weight="700" fill="#666666" text-anchor="middle">MTD</text>
+
+  <!-- gap annotation -->
+  <line x1="347" y1="215" x2="448" y2="215" stroke="#444444" stroke-width="1.1"/>
+  <polygon points="345,215 353,211 353,219" fill="#444444"/>
+  <polygon points="450,215 442,211 442,219" fill="#444444"/>
+  <text x="397" y="207" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#444444" text-anchor="middle">optimum &#8800; maximum</text>
+
+  <!-- zone labels -->
+  <text x="150" y="363" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="11" fill="#888888">subtherapeutic</text>
+  <text x="648" y="363" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="11" fill="#888888" text-anchor="end">toxic</text>
+
+  <!-- axis titles -->
+  <text x="395" y="398" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="13" fill="#444444" text-anchor="middle">Drug exposure (dose)</text>
+  <text x="40" y="210" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="13" fill="#444444" text-anchor="middle" transform="rotate(-90 40 210)">Clinical effect</text>
+
+  <!-- caption -->
+  <text x="95" y="440" font-family="Nunito Sans, Avenir Next, Arial, sans-serif" font-size="11.5" fill="#888888" font-style="italic">Schematic. Efficacy plateaus while toxicity keeps climbing, so peak benefit&#8211;risk sits below the tolerable maximum.</text>
+</svg>
