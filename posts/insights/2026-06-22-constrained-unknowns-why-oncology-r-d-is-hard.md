@@ -21,7 +21,7 @@ The second is a **constrained unknown** - and this is where oncology spends most
 
 The cleanest constrained unknown in all of drug development is **dose**. Too little drug and there is no efficacy. Too much and the toxicity is unacceptable. The best dose lies between, where benefit is adequate and harm is tolerable - and, critically, that point is almost never the maximum tolerated dose. The entire history of cytotoxic chemotherapy assumed otherwise (more is better, dose to the limit of tolerability), and the entire modern correction - the FDA's Project Optimus - exists because for targeted and immuno-oncology agents the efficacy curve often plateaus well below the toxic ceiling. The optimum is interior, and we spent decades dosing past it.
 
-![Figure 1 - The dose trade-off. Efficacy rises and plateaus; toxicity rises and keeps climbing. The optimal dose sits inside the therapeutic window, below the maximum tolerated dose.](/images/uploads/fig1_dose_tradeoff-2.svg)
+![Figure 1 - The dose trade-off. Efficacy rises and plateaus; toxicity rises and keeps climbing. The optimal dose sits inside the therapeutic window, below the maximum tolerated dose.](/images/uploads/fig1_dose_tradeoff-3.svg)
 
 *Figure 1 (schematic). The optimum is interior: peak benefit–risk sits where efficacy has plateaued but toxicity is still low - to the left of the maximum tolerated dose.*
 
@@ -35,7 +35,7 @@ Once you see the shape, you see it everywhere:
 
 The enterprise, in other words, is not one Goldilocks problem. It is a *stack* of them.
 
-![Figure 2 - The biomarker-cutoff trade-off. Tightening the cutoff lifts the effect size but shrinks the eligible population; the resulting overall value peaks in the interior.](/images/uploads/fig2_biomarker_cutoff-2.svg)
+![Figure 2 - The biomarker-cutoff trade-off. Tightening the cutoff lifts the effect size but shrinks the eligible population; the resulting overall value peaks in the interior.](/images/uploads/fig2_biomarker_cutoff-3.svg)
 
 *Figure 2 (schematic). The same interior optimum, a completely different lever: as the biomarker cutoff tightens, effect size rises while the eligible population falls, and the value that depends on both turns over in the middle.*
 
